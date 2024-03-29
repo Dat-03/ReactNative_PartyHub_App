@@ -1,3 +1,5 @@
 import SpaceComponent from './SpaceComponent';
+import AppText from './AppText';
+import ButtonCT from './ButtonCT';
 
-export {SpaceComponent};
+export {SpaceComponent, AppText, ButtonCT};

@@ -74,9 +74,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.evenhub_client"
+    namespace "com.EventHub_app"
     defaultConfig {
-        applicationId "com.evenhub_client"
+        applicationId "com.EventHub_app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

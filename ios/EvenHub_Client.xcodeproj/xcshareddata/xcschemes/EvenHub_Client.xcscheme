@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "EvenHub_Client.app"
-               BlueprintName = "EvenHub_Client"
-               ReferencedContainer = "container:EvenHub_Client.xcodeproj">
+               BuildableName = "EventHub_app.app"
+               BlueprintName = "EventHub_app"
+               ReferencedContainer = "container:EventHub_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "EvenHub_ClientTests.xctest"
-               BlueprintName = "EvenHub_ClientTests"
-               ReferencedContainer = "container:EvenHub_Client.xcodeproj">
+               BuildableName = "EventHub_appTests.xctest"
+               BlueprintName = "EventHub_appTests"
+               ReferencedContainer = "container:EventHub_app.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "EvenHub_Client.app"
-            BlueprintName = "EvenHub_Client"
-            ReferencedContainer = "container:EvenHub_Client.xcodeproj">
+            BuildableName = "EventHub_app.app"
+            BlueprintName = "EventHub_app"
+            ReferencedContainer = "container:EventHub_app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "EvenHub_Client.app"
-            BlueprintName = "EvenHub_Client"
-            ReferencedContainer = "container:EvenHub_Client.xcodeproj">
+            BuildableName = "EventHub_app.app"
+            BlueprintName = "EventHub_app"
+            ReferencedContainer = "container:EventHub_app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

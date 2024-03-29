@@ -1,5 +1,5 @@
 {
-  "name": "EvenHub_Client",
+  "name": "EventHub_app",
   "version": "0.0.1",
   "private": true,
   "scripts": {

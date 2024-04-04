@@ -12,22 +12,23 @@ interface Props {
   styles?: StyleProp<TextStyle>;
   title?: boolean;
 }
-const AppText = (props: Props) => {
+const TextCT = (props: Props) => {
   const {text, color, size, flex, font, styles, title} = props;
   return (
     <Text
       style={[
         globalStyles.text,
         {
-          color: color ? color : appColors.text,
-          fontSize: size ?? title ? 24 : 14,
+          color: color ?? appColors.text,
+          fontSize: size ?? title ? 24 : 16,
           flex: flex ?? 0,
           fontFamily: font ?? title ? fontFamilies.bold : fontFamilies.regular,
         },
+        styles,
       ]}>
       {text}
     </Text>
   );
 };
 
-export default AppText;
+export default TextCT;

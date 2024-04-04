@@ -7,7 +7,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {ReactNode} from 'react';
-import {AppText} from '.';
+import {TextCT} from '.';
+import {globalStyles} from '../styles/globalStyles';
+import {appColors} from '../constants/themeColor';
+import {fontFamilies} from '../constants/FontFamilies';
 
 interface Props {
   icon?: ReactNode;
@@ -32,11 +35,29 @@ const ButtonCT = (props: Props) => {
     onPress,
     iconFlex,
   } = props;
-  return (
-    <TouchableOpacity>
-      {icon && iconFlex === 'left' && icon}
-      <AppText text={text} color={textColor} styles={textStyles} />
+  return type === 'primary' ? (
+    <TouchableOpacity
+      onPress={onPress}
+      style={[
+        globalStyles.button,
+        {backgroundColor: color ?? appColors.primary},
+        styles,
+      ]}>
+      {icon && icon}
+      <TextCT
+        text={text}
+        color={textColor ?? appColors.white}
+        styles={[textStyles, {marginLeft: icon ? 12 : 0}]}
+        flex={icon && iconFlex === 'right' ? 1 : 0}
+      />
       {icon && iconFlex === 'right' && icon}
+    </TouchableOpacity>
+  ) : (
+    <TouchableOpacity>
+      <TextCT
+        text={text}
+        color={type === 'link' ? appColors.primary : appColors.text}
+      />
     </TouchableOpacity>
   );
 };

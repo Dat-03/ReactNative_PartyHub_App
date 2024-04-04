@@ -5,7 +5,7 @@ import {images} from '../../assets/images/png';
 import Swiper from 'react-native-swiper';
 import {appInfo} from '../../constants/appInfos';
 import {appColors} from '../../constants/themeColor';
-import {AppText} from '../../components';
+import {TextCT} from '../../components';
 import {fontFamilies} from '../../constants/FontFamilies';
 
 const OnbroadingScreen: React.FC = ({navigation}: any) => {
@@ -25,7 +25,7 @@ const OnbroadingScreen: React.FC = ({navigation}: any) => {
       </Swiper>
       <View style={styles.content}>
         <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-          <AppText
+          <TextCT
             text="Skip"
             color={appColors.gray2}
             font={fontFamilies.medium}
@@ -35,7 +35,7 @@ const OnbroadingScreen: React.FC = ({navigation}: any) => {
           onPress={() =>
             index < 2 ? setindex(index + 1) : navigation.navigate('LoginScreen')
           }>
-          <AppText
+          <TextCT
             text="Next"
             color={appColors.white}
             font={fontFamilies.medium}

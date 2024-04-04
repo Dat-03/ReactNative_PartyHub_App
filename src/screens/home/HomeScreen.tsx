@@ -9,7 +9,8 @@ const HomeScreen = () => {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={async () => await AsyncStorage.clear()}>
+        onPress={async () => await AsyncStorage.clear()}
+        >
         <Text style={{color: 'white',fontSize:20}}>Log Out</Text>
       </TouchableOpacity>
     </View>

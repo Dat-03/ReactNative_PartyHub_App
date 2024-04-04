@@ -11,4 +11,5 @@ export const appColors = {
   link: '#5669FF',
   danger: '#e74c3c',
   dotOnboard: '#7887FF',
+  placeholder: '#747688',
 };

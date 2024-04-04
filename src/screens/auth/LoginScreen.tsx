@@ -1,38 +1,38 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {ButtonCT} from '../../components';
+import {ButtonCT, InputCT} from '../../components';
 import {globalStyles} from '../../styles/globalStyles';
+import {Lock, Sms} from 'iconsax-react-native';
+import {appColors} from '../../constants/themeColor';
 
 const LoginScreen: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
     <View
-      style={[globalStyles.container]}>
-      <Text>LoginScreen</Text>
-      {/* <TouchableOpacity
-        style={styles.button}
-        onPress={async () => await AsyncStorage.setItem('assetToken', 'fafafafa')}
-      /> */}
-      <ButtonCT
-        text="Login"
-        onPress={() => console.log('login')}
-        type='link'
-        icon={
-          <View>
-            <Text>N</Text>
-          </View>
-        }
+      style={[
+        globalStyles.container,
+        {justifyContent: 'center', alignItems: 'center', padding: 20},
+      ]}>
+      <InputCT
+        value={email}
+        placeholder="Email"
+        OnChange={val => setEmail(val)}
+        // isPassword
+        allowClear
+        affix={<Sms size={22} color={appColors.gray} />}
+      />
+      <InputCT
+        value={password}
+        placeholder="Password"
+        OnChange={val => setPassword(val)}
+        isPassword
+        allowClear
+        affix={<Lock size={22} color={appColors.gray} />}
       />
     </View>
   );
 };
 
 export default LoginScreen;
-
-const styles = StyleSheet.create({
-  button: {
-    width: 100,
-    height: 100,
-    backgroundColor: 'red',
-  },
-});

@@ -19,7 +19,16 @@ export const globalStyles = StyleSheet.create({
     backgroundColor: appColors.white,
     paddingHorizontal: 16,
     paddingVertical: 16,
-    maxHeight: 56,
+    minHeight: 56,
     flexDirection: 'row',
   },
+  section: {
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+  },
+  row:{
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'flex-start',
+  }
 });

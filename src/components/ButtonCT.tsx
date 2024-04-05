@@ -47,8 +47,9 @@ const ButtonCT = (props: Props) => {
       <TextCT
         text={text}
         color={textColor ?? appColors.white}
-        styles={[textStyles, {marginLeft: icon ? 12 : 0}]}
+        styles={[textStyles, {marginLeft: icon ? 12 : 0, fontSize: 16}]}
         flex={icon && iconFlex === 'right' ? 1 : 0}
+        font={fontFamilies.medium}
       />
       {icon && iconFlex === 'right' && icon}
     </TouchableOpacity>

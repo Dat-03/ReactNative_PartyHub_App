@@ -20,9 +20,9 @@ const TextCT = (props: Props) => {
         globalStyles.text,
         {
           color: color ?? appColors.text,
-          fontSize: size ?? title ? 24 : 16,
+          fontSize: size ? size : title ? 24 : 14,
           flex: flex ?? 0,
-          fontFamily: font ?? title ? fontFamilies.bold : fontFamilies.regular,
+          fontFamily: font ? fontFamilies.medium : fontFamilies.regular,
         },
         styles,
       ]}>

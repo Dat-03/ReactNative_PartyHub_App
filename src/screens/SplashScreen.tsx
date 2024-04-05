@@ -9,7 +9,7 @@ import {
 import React from 'react';
 import {images} from '../assets/images/png';
 import {appInfo} from '../constants/appInfos';
-import {SpaceComponent} from '../components';
+import {SpaceCT} from '../components';
 import {appColors} from '../constants/themeColor';
 
 const SplashScreen = () => {
@@ -19,7 +19,7 @@ const SplashScreen = () => {
       style={styles.container}
       imageStyle={{flex: 1}}>
       <Image source={images.lobby} style={styles.logo} />
-      <SpaceComponent height={16} />
+      <SpaceCT height={16} />
       <ActivityIndicator color={appColors.gray} size={40} // loading
       /> 
     </ImageBackground>

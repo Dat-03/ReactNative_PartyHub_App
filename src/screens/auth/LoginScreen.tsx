@@ -21,9 +21,9 @@ import {globalStyles} from '../../styles/globalStyles';
 import {Lock, Sms} from 'iconsax-react-native';
 import {appColors} from '../../constants/themeColor';
 import {images} from '../../assets/images/png';
-import { SocialLogin } from './components';
+import {SocialLogin} from './components';
 
-const LoginScreen: React.FC = () => {
+const LoginScreen: React.FC = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRemember, setIsRemember] = useState(true);
@@ -33,11 +33,11 @@ const LoginScreen: React.FC = () => {
         styles={{
           justifyContent: 'center',
           alignItems: 'center',
-          marginTop: 75,
+          marginTop: 25,
         }}>
         <Image
           source={images.signIn}
-          style={{width: 162, height: 114, marginBottom: 30}}
+          style={{width: 162, height: 114, marginStart: 18}}
         />
       </SectionCT>
       <SectionCT>
@@ -69,18 +69,26 @@ const LoginScreen: React.FC = () => {
             />
             <TextCT text="Remember me" />
           </RowCT>
-          <ButtonCT text="Forgot Password?" onPress={() => {}} type="text" />
+          <ButtonCT
+            text="Forgot Password?"
+            onPress={() => navigation.navigate('ForgotPassword')}
+          />
         </RowCT>
       </SectionCT>
-      <SpaceCT height={16} />
+      <SpaceCT height={10} />
       <SectionCT>
-        <ButtonCT text='SIGN IN' type='primary'/>
+        <ButtonCT text="SIGN IN" type="primary" />
       </SectionCT>
-      <SocialLogin/>
+
+      <SocialLogin />
       <SectionCT>
-        <RowCT justify='center'>
-          <TextCT text="Don't have an acccount? "/>
-          <ButtonCT text='Sign Up' type='link'/>
+        <RowCT justify="center">
+          <TextCT text="Don't have an acccount? " />
+          <ButtonCT
+            text="Sign Up"
+            type="link"
+            onPress={() => navigation.navigate('SignUpScreen')}
+          />
         </RowCT>
       </SectionCT>
     </ContainerCT>

@@ -1,10 +1,8 @@
-import {View, Text} from 'react-native';
 import React from 'react';
-import {ButtonCT, SectionCT, SpaceCT, TextCT} from '../../../components';
-import {appColors} from '../../../constants/themeColor';
-import {fontFamilies} from '../../../constants/FontFamilies';
 import {Facebook, Google} from '../../../assets';
-import {AlignLeft} from 'iconsax-react-native';
+import {ButtonCT, SectionCT, SpaceCT, TextCT} from '../../../components';
+import {fontFamilies} from '../../../constants/FontFamilies';
+import {appColors} from '../../../constants/themeColor';
 
 const SocialLogin = () => {
   return (
@@ -24,16 +22,16 @@ const SocialLogin = () => {
         textColor={appColors.text}
         icon={<Google />}
         iconFlex="left"
-        textFont={fontFamilies.regular}
+        textFont={fontFamilies.medium}
       />
       <ButtonCT
         type="primary"
         color={appColors.white}
-        text="Login with Google"
+        text="Login with Facebook"
         textColor={appColors.text}
         icon={<Facebook />}
         iconFlex="left"
-        textFont={fontFamilies.regular}
+        textFont={fontFamilies.medium}
       />
     </SectionCT>
   );

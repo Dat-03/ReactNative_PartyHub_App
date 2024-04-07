@@ -1,18 +1,15 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {ButtonCT} from '../../components';
+import {useDispatch} from 'react-redux';
+import {removeAuth} from '../../redux/reducers/auth.Reducer';
 
 const HomeScreen = () => {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
-      <Text>HomeScreen</Text>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={async () => await AsyncStorage.clear()}
-        >
-        <Text style={{color: 'white',fontSize:20}}>Log Out</Text>
-      </TouchableOpacity>
+      <ButtonCT text="LogOut" onPress={() => dispatch(removeAuth({}))} />
     </View>
   );
 };

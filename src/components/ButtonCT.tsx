@@ -46,7 +46,7 @@ const ButtonCT = (props: Props) => {
           globalStyles.shadow,
           {
             backgroundColor: color ?? appColors.primary,
-            marginBottom: 17,
+            marginBottom: 10,
             width: '90%',
           },
 

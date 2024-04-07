@@ -48,6 +48,7 @@ const InputCT = (props: Props) => {
         secureTextEntry={isShowPassword}
         placeholderTextColor={appColors.placeholder}
         keyboardType={type ?? 'default'}
+        autoCapitalize="none"
       />
       {suffix ?? suffix}
       <TouchableOpacity

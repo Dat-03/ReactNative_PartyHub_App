@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {ArrowRight, Sms} from 'iconsax-react-native';
 import React, {useState} from 'react';
 import {
   ButtonCT,
@@ -9,7 +9,6 @@ import {
   TextCT,
 } from '../../components';
 import {appColors} from '../../constants/themeColor';
-import {ArrowRight, Sms} from 'iconsax-react-native';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');

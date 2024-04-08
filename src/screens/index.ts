@@ -1,15 +1,15 @@
 import HomeScreen from './home/HomeScreen';
 import LoginScreen from './auth/LoginScreen';
 import SplashScreen from './SplashScreen';
-import Verication from './auth/Verication';
-import ForgotPasword from './auth/ForgotPassword';
+import ForgotPassword from './auth/ForgotPassword';
 import SignUpScreen from './auth/SignUpScreen';
+import Verification from './auth/Verification';
 
 export {
   HomeScreen,
   LoginScreen,
   SplashScreen,
-  ForgotPasword,
-  Verication,
+  ForgotPassword,
+  Verification,
   SignUpScreen,
 };

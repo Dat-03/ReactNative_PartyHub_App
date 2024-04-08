@@ -15,25 +15,27 @@ import {globalStyles} from '../styles/globalStyles';
 
 interface Props {
   value: string;
-  OnChange: (val: string) => void;
+  onChange: (val: string) => void;
   affix?: ReactNode;
   placeholder?: string;
   suffix?: ReactNode;
   isPassword?: boolean;
   allowClear?: boolean;
   type?: KeyboardType;
+  onEnd?: () => void;
 }
 
 const InputCT = (props: Props) => {
   const {
     value,
-    OnChange,
+    onChange,
     affix,
     placeholder,
     suffix,
     isPassword,
     type,
     allowClear,
+    onEnd,
   } = props;
   const [isShowPassword, setIsShowPassword] = useState(isPassword ?? false);
 
@@ -44,18 +46,19 @@ const InputCT = (props: Props) => {
         style={[styles.input, globalStyles.text]}
         value={value}
         placeholder={placeholder ?? ''}
-        onChangeText={val => OnChange(val)}
+        onChangeText={val => onChange(val)}
         secureTextEntry={isShowPassword}
         placeholderTextColor={appColors.placeholder}
         keyboardType={type ?? 'default'}
         autoCapitalize="none"
+        onEndEditing={onEnd}
       />
       {suffix ?? suffix}
       <TouchableOpacity
         onPress={
           isPassword
             ? () => setIsShowPassword(!isShowPassword)
-            : () => OnChange('')
+            : () => onChange('')
         }>
         {isPassword ? (
           <FontAwesome

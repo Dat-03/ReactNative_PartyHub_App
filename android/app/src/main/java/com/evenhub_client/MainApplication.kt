@@ -1,4 +1,4 @@
-package com.EventHub_app
+package com.EventHub
 
 import android.app.Application
 import com.facebook.react.PackageList

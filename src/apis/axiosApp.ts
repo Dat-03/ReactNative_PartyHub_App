@@ -1,9 +1,10 @@
 import axios from 'axios';
 import queryString from 'query-string';
+import {appInfo} from '../constants/appInfos';
 
 const axiosApp = axios.create({
+  baseURL: appInfo.BASE_URL,
   paramsSerializer: params => queryString.stringify(params),
-  baseURL: 'http://192.168.1.13:3000',
 });
 
 axiosApp.interceptors.request.use(async (config: any) => {
@@ -12,12 +13,14 @@ axiosApp.interceptors.request.use(async (config: any) => {
     Accept: 'application/json',
     ...config.headers,
   };
+
   config.data;
   return config;
 });
+
 axiosApp.interceptors.response.use(
   res => {
-    if (res.data && res.data.status === 200) {
+    if (res.data && res.status === 200) {
       return res.data;
     }
     throw new Error('Error');

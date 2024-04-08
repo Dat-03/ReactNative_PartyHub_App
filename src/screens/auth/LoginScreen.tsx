@@ -1,13 +1,7 @@
-import {
-  Image,
-  StyleSheet,
-  Switch,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import React, {useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Lock, Sms} from 'iconsax-react-native';
+import React, {useEffect, useState} from 'react';
+import {Alert, Image, Switch} from 'react-native';
+import authenticationAPI from '../../apis/authApi';
 import {
   ButtonCT,
   ContainerCT,
@@ -17,24 +11,39 @@ import {
   SpaceCT,
   TextCT,
 } from '../../components';
-import {globalStyles} from '../../styles/globalStyles';
-import {Lock, Sms} from 'iconsax-react-native';
+import {useDispatch} from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {addAuth} from '../../redux/reducers/authReducer';
+import {images} from '../../assets';
 import {appColors} from '../../constants/themeColor';
-import {images} from '../../assets/images/png';
 import {SocialLogin} from './components';
-import authenticationAPI from '../../apis/authApi';
+import {Validate} from '../../utils/Validate';
 
 const LoginScreen: React.FC = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRemember, setIsRemember] = useState(true);
+  const dispatch = useDispatch();
 
   const handleLogin = async () => {
-    try {
-      const res = await authenticationAPI.HandleAuthentication('/hello');
-      console.log(res);
-    } catch (error) {
-      console.log(error);
+    const emailValidation = Validate.email(email);
+    if (emailValidation) {
+      try {
+        const res = await authenticationAPI.HandleAuthentication(
+          '/login',
+          {email, password},
+          'post',
+        );
+        dispatch(addAuth(res.data));
+        await AsyncStorage.setItem(
+          'auth',
+          isRemember ? JSON.stringify(res.data) : email,
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      Alert.alert('Email is not valid');
     }
   };
 
@@ -57,15 +66,14 @@ const LoginScreen: React.FC = ({navigation}: any) => {
         <InputCT
           value={email}
           placeholder="Email"
-          OnChange={val => setEmail(val)}
-          // isPassword
+          onChange={val => setEmail(val)}
           allowClear
           affix={<Sms size={22} color={appColors.gray} />}
         />
         <InputCT
           value={password}
           placeholder="Password"
-          OnChange={val => setPassword(val)}
+          onChange={val => setPassword(val)}
           isPassword
           allowClear
           affix={<Lock size={22} color={appColors.gray} />}
@@ -78,17 +86,19 @@ const LoginScreen: React.FC = ({navigation}: any) => {
               value={isRemember}
               onChange={() => setIsRemember(!isRemember)}
             />
+            <SpaceCT width={4} />
             <TextCT text="Remember me" />
           </RowCT>
           <ButtonCT
             text="Forgot Password?"
             onPress={() => navigation.navigate('ForgotPassword')}
+            type="text"
           />
         </RowCT>
       </SectionCT>
 
       <SectionCT>
-        <ButtonCT text="SIGN IN" type="primary" onPress={handleLogin} />
+        <ButtonCT onPress={handleLogin} text="SIGN IN" type="primary" />
       </SectionCT>
 
       <SocialLogin />
@@ -96,8 +106,8 @@ const LoginScreen: React.FC = ({navigation}: any) => {
         <RowCT justify="center">
           <TextCT text="Don't have an acccount? " />
           <ButtonCT
-            text="Sign Up"
             type="link"
+            text="Sign up"
             onPress={() => navigation.navigate('SignUpScreen')}
           />
         </RowCT>

@@ -9,16 +9,15 @@ import {TextCT} from '../../components';
 import {fontFamilies} from '../../constants/FontFamilies';
 
 const OnbroadingScreen: React.FC = ({navigation}: any) => {
-  const [index, setindex] = useState(0);
+  const [index, setIndex] = useState(0);
   return (
     <View style={[globalStyles.container]}>
       <Swiper
         style={{}}
         loop={false}
         index={index}
-        onIndexChanged={num => setindex(num)}
-        activeDotColor={appColors.white}
-        dotColor={appColors.dotOnboard}>
+        onIndexChanged={num => setIndex(num)}
+        activeDotColor={appColors.white}>
         <Image source={images.onBoard1} style={styles.img} />
         <Image source={images.onBoard2} style={styles.img} />
         <Image source={images.onBoard3} style={styles.img} />
@@ -33,7 +32,7 @@ const OnbroadingScreen: React.FC = ({navigation}: any) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
-            index < 2 ? setindex(index + 1) : navigation.navigate('LoginScreen')
+            index < 2 ? setIndex(index + 1) : navigation.navigate('LoginScreen')
           }>
           <TextCT
             text="Next"
@@ -59,9 +58,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 20,
     position: 'absolute',
-    bottom: 0,
-    right: 0,
-    left: 0,
+    bottom: 20,
+    right: 20,
+    left: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

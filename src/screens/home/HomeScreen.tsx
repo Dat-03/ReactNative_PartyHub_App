@@ -2,14 +2,21 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ButtonCT} from '../../components';
-import {useDispatch} from 'react-redux';
-import {removeAuth} from '../../redux/reducers/auth.Reducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {authSelector, removeAuth} from '../../redux/reducers/authReducer';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: any) => {
   const dispatch = useDispatch();
+  const auth = useSelector(authSelector);
   return (
     <View style={styles.container}>
-      <ButtonCT text="LogOut" onPress={() => dispatch(removeAuth({}))} />
+      <ButtonCT
+        text="LogOut"
+        onPress={async () => {
+          await AsyncStorage.setItem('auth', auth.email);
+          dispatch(removeAuth({}));
+        }}
+      />
     </View>
   );
 };

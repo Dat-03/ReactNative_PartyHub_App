@@ -3,13 +3,13 @@ import {createSlice} from '@reduxjs/toolkit';
 interface AuthState {
   id: string;
   email: string;
-  accessToken: string;
+  accesstoken: string;
 }
 
 const initialState: AuthState = {
   id: '',
   email: '',
-  accessToken: '',
+  accesstoken: '',
 };
 
 const authSlice = createSlice({
@@ -21,6 +21,7 @@ const authSlice = createSlice({
     addAuth: (state, action) => {
       state.authData = action.payload;
     },
+
     removeAuth: (state, action) => {
       state.authData = initialState;
     },
@@ -29,4 +30,5 @@ const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 export const {addAuth, removeAuth} = authSlice.actions;
+
 export const authSelector = (state: any) => state.authReducer.authData;

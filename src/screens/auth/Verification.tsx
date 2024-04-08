@@ -93,7 +93,7 @@ const Verification = ({navigation, route}: any) => {
             data,
             'post',
           );
-          console.log(newCode);
+          console.log(res.data);
           dispatch(addAuth(res.data));
           await AsyncStorage.setItem('auth', JSON.stringify(res.data));
         } catch (error) {

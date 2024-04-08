@@ -12,4 +12,5 @@ export const appColors = {
   danger: '#e74c3c',
   dotOnboard: '#7887FF',
   placeholder: '#747688',
+  iconRight: '#3D56F9',
 };

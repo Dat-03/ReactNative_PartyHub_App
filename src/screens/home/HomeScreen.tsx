@@ -4,6 +4,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ButtonCT} from '../../components';
 import {useDispatch, useSelector} from 'react-redux';
 import {authSelector, removeAuth} from '../../redux/reducers/authReducer';
+import {ArrowRight} from 'iconsax-react-native';
+import {globalStyles} from '../../styles/globalStyles';
+import {appColors} from '../../constants/themeColor';
 
 const HomeScreen = ({navigation}: any) => {
   const dispatch = useDispatch();
@@ -12,10 +15,17 @@ const HomeScreen = ({navigation}: any) => {
     <View style={styles.container}>
       <ButtonCT
         text="LogOut"
+        type="primary"
         onPress={async () => {
           await AsyncStorage.setItem('auth', auth.email);
           dispatch(removeAuth({}));
         }}
+        iconFlex="right"
+        icon={
+          <View style={[globalStyles.iconContainer]}>
+            <ArrowRight size={18} color={appColors.white} />
+          </View>
+        }
       />
     </View>
   );

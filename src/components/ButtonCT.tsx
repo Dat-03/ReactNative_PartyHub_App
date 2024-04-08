@@ -76,6 +76,7 @@ const ButtonCT = (props: Props) => {
   ) : (
     <TouchableOpacity onPress={onPress}>
       <TextCT
+        flex={0}
         text={text}
         color={type === 'link' ? appColors.primary : appColors.text}
       />

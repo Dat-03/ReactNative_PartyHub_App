@@ -26,19 +26,27 @@ export const globalStyles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 20,
   },
-  row:{
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'flex-start',
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
-  shadow:{
+  shadow: {
     shadowColor: 'rgba (0,0,0,0.5)',
     shadowOffset: {
       width: 0,
       height: 4,
     },
     shadowOpacity: 0.25,
-    shadowRadius:8,
+    shadowRadius: 8,
     elevation: 6,
-  }
+  },
+  iconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: appColors.iconRight,
+    width: 30,
+    height: 30,
+    borderRadius: 99,
+  },
 });

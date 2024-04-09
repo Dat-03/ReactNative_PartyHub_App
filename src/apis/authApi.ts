@@ -13,5 +13,6 @@ class AuthAPI {
     });
   };
 }
+
 const authenticationAPI = new AuthAPI();
 export default authenticationAPI;

@@ -24,6 +24,17 @@ const LoginScreen: React.FC = ({navigation}: any) => {
   const [password, setPassword] = useState('');
   const [isRemember, setIsRemember] = useState(true);
   const dispatch = useDispatch();
+  const [isDisable, setIsDisable] = useState(true);
+
+  useEffect(() => {
+    const emailValidation = Validate.email(email);
+
+    if (!email || !password || !emailValidation) {
+      setIsDisable(true);
+    } else {
+      setIsDisable(false);
+    }
+  }, [email, password]);
 
   const handleLogin = async () => {
     const emailValidation = Validate.email(email);
@@ -98,7 +109,12 @@ const LoginScreen: React.FC = ({navigation}: any) => {
       </SectionCT>
 
       <SectionCT>
-        <ButtonCT onPress={handleLogin} text="SIGN IN" type="primary" />
+        <ButtonCT
+          disable={isDisable}
+          onPress={handleLogin}
+          text="SIGN IN"
+          type="primary"
+        />
       </SectionCT>
 
       <SocialLogin />

@@ -1,12 +1,13 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {ButtonCT} from '../../components';
-import {useDispatch, useSelector} from 'react-redux';
-import {authSelector, removeAuth} from '../../redux/reducers/authReducer';
 import {ArrowRight} from 'iconsax-react-native';
-import {globalStyles} from '../../styles/globalStyles';
-import {appColors} from '../../constants/themeColor';
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {ButtonCT} from '../../../components';
+import {appColors} from '../../../constants/themeColor';
+import {authSelector, removeAuth} from '../../../redux/reducers/authReducer';
+import {globalStyles} from '../../../styles/globalStyles';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 const HomeScreen = ({navigation}: any) => {
   const dispatch = useDispatch();
@@ -17,7 +18,9 @@ const HomeScreen = ({navigation}: any) => {
         text="LogOut"
         type="primary"
         onPress={async () => {
-          await AsyncStorage.setItem('auth', auth.email);
+          await AsyncStorage.clear();
+          await GoogleSignin.signOut();
+
           dispatch(removeAuth({}));
         }}
         iconFlex="right"

@@ -17,4 +17,7 @@ export const appColors = {
   iconRight: '#3D56F9',
   purple: '#524CE0',
   blue: '#02E9FE',
+  blue1: '#00F8FF',
+  blue2: '#00F8FF33',
+  
 };

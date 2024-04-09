@@ -19,30 +19,6 @@ const SocialLogin = ({navigation}: any) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
-  // const handleLoginWithGoogle = async () => {
-  //   await GoogleSignin.hasPlayServices({
-  //     showPlayServicesUpdateDialog: true,
-  //   });
-
-  //   try {
-  //     await GoogleSignin.hasPlayServices();
-  //     const userInfo = await GoogleSignin.signIn();
-  //     const user = userInfo.user;
-
-  //     const res: any = await authenticationAPI.HandleAuthentication(
-  //       api,
-  //       user,
-  //       'post',
-  //     );
-
-  //     dispatch(addAuth(res.data));
-
-  //     await AsyncStorage.setItem('auth', JSON.stringify(res.data));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   const handleLoginWithGoogle = async () => {
     await GoogleSignin.hasPlayServices({
       showPlayServicesUpdateDialog: true,

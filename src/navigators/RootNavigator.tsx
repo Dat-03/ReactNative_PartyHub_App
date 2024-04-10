@@ -20,7 +20,7 @@ const RootNavigator = () => {
     checkLogin();
     const timeout = setTimeout(() => {
       setIsShowSplash(false);
-    }, 1500);
+    }, 3000);
 
     return () => clearTimeout(timeout);
   }, []);

@@ -80,8 +80,8 @@ const DrawerCT = ({navigation}: any) => {
   ];
   const handleSignOut = async () => {
     await GoogleSignin.signOut();
-    dispatch(removeAuth({}));
     await AsyncStorage.clear();
+    dispatch(removeAuth({}));
   };
   return (
     <View style={[styles.container]}>

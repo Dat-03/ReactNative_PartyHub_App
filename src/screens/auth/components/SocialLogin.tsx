@@ -12,8 +12,7 @@ import {LoadingModal} from '../../../modal';
 
 GoogleSignin.configure({
   webClientId:
-    '295241568596-vleiveu4dib5vltn5qv9d6osoa3fnrnh.apps.googleusercontent.com',
-  // '295241568596-8ftn3auhanvfid3ghpnkouvrvj8mbmhk.apps.googleusercontent.com',
+    '483037659079-fn327u7lp3ider59bqvjsnr8hs3jahcv.apps.googleusercontent.com',
 });
 const SocialLogin = ({navigation}: any) => {
   const dispatch = useDispatch();

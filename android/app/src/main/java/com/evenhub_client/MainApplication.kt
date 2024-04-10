@@ -1,4 +1,4 @@
-package com.EventHub
+package com.PartyHub
 
 import android.app.Application
 import com.facebook.react.PackageList

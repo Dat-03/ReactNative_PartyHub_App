@@ -66,10 +66,7 @@ const LoginScreen: React.FC = ({navigation}: any) => {
           alignItems: 'center',
           marginTop: 25,
         }}>
-        <Image
-          source={images.signIn}
-          style={{width: 162, height: 114, marginStart: 18}}
-        />
+        <Image source={images.signIn} style={{width: 162, height: 114}} />
       </SectionCT>
       <SectionCT>
         <TextCT text="Sign In" size={24} title />

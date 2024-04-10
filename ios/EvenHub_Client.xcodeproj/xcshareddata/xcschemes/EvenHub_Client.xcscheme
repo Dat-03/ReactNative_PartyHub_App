@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "EventHub.app"
-               BlueprintName = "EventHub"
-               ReferencedContainer = "container:EventHub.xcodeproj">
+               BuildableName = "PartyHub.app"
+               BlueprintName = "PartyHub"
+               ReferencedContainer = "container:PartyHub.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "EventHubTests.xctest"
-               BlueprintName = "EventHubTests"
-               ReferencedContainer = "container:EventHub.xcodeproj">
+               BuildableName = "PartyHubTests.xctest"
+               BlueprintName = "PartyHubTests"
+               ReferencedContainer = "container:PartyHub.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "EventHub.app"
-            BlueprintName = "EventHub"
-            ReferencedContainer = "container:EventHub.xcodeproj">
+            BuildableName = "PartyHub.app"
+            BlueprintName = "PartyHub"
+            ReferencedContainer = "container:PartyHub.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "EventHub.app"
-            BlueprintName = "EventHub"
-            ReferencedContainer = "container:EventHub.xcodeproj">
+            BuildableName = "PartyHub.app"
+            BlueprintName = "PartyHub"
+            ReferencedContainer = "container:PartyHub.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -1,15 +1,13 @@
+import React from 'react';
 import {
   ActivityIndicator,
   Image,
   ImageBackground,
   StyleSheet,
-  Text,
-  View,
 } from 'react-native';
-import React from 'react';
 import {images} from '../assets/images/png';
-import {appInfo} from '../constants/appInfos';
 import {SpaceCT} from '../components';
+import {appInfo} from '../constants/appInfos';
 import {appColors} from '../constants/themeColor';
 
 const SplashScreen = () => {
@@ -20,8 +18,10 @@ const SplashScreen = () => {
       imageStyle={{flex: 1}}>
       <Image source={images.lobby} style={styles.logo} />
       <SpaceCT height={16} />
-      <ActivityIndicator color={appColors.gray} size={40} // loading
-      /> 
+      <ActivityIndicator
+        color={appColors.gray}
+        size={40} // loading
+      />
     </ImageBackground>
   );
 };

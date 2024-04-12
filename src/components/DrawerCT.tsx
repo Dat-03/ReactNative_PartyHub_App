@@ -31,6 +31,7 @@ import {
 } from 'iconsax-react-native';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {LoginManager} from 'react-native-fbsdk-next';
 const DrawerCT = ({navigation}: any) => {
   const user = useSelector(authSelector);
   const dispatch = useDispatch();
@@ -80,6 +81,7 @@ const DrawerCT = ({navigation}: any) => {
   ];
   const handleSignOut = async () => {
     await GoogleSignin.signOut();
+    LoginManager.logOut();
     await AsyncStorage.clear();
     dispatch(removeAuth({}));
   };

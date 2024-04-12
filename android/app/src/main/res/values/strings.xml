@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PartyHub</string>
+    <string name="facebook_app_id">1472262400367909</string><string name="facebook_client_token">1b17fad2d111bed313a4fb616bbaecdf</string>
+
 </resources>

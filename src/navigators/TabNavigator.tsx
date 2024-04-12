@@ -5,15 +5,24 @@ import EventNavigator from './EventNavigator';
 import {AddNewScreen} from '../screens';
 import MapNavigator from './MapNavigator';
 import ProfileNavigator from './ProfileNavigator';
-import {appColors} from '../constants/themeColor';
-import {AddSquare, Calendar, Home2, Location, User} from 'iconsax-react-native';
-import {CircleCT, TextCT} from '../components';
+import {
+  AddSquare,
+  Calendar,
+  Home2,
+  Iost,
+  Location,
+  User,
+} from 'iconsax-react-native';
 import {Platform, View} from 'react-native';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {globalStyles} from '../styles/globalStyles';
 import DrawerNavigator from './DrawerNavigator';
+import {CircleCT, TextCT} from '../components';
+import {appColors} from '../constants/themeColor';
+
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
+
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -26,13 +35,14 @@ const TabNavigator = () => {
         },
         tabBarIcon: ({focused, color, size}) => {
           let icon: ReactNode;
-          color: focused ? appColors.primary : appColors.gray5;
+          color = focused ? appColors.primary : appColors.gray5;
           size = 24;
           switch (route.name) {
             case 'Explore':
-              icon = <MaterialIcon name="explore" size={size} color={color} />;
+              icon = <MaterialIcons name="explore" size={size} color={color} />;
               break;
-            case 'Event':
+
+            case 'Events':
               icon = <Calendar size={size} variant="Bold" color={color} />;
               break;
             case 'Map':
@@ -41,29 +51,32 @@ const TabNavigator = () => {
             case 'Profile':
               icon = <User size={size} variant="Bold" color={color} />;
               break;
+
             case 'Add':
               icon = (
                 <CircleCT
                   size={52}
-                  styles={{marginTop: Platform.OS === 'ios' ? -50 : -60}}>
+                  styles={[
+                    globalStyles.shadow,
+                    {marginTop: Platform.OS === 'ios' ? -50 : -60},
+                  ]}>
                   <AddSquare size={24} color={appColors.white} variant="Bold" />
                 </CircleCT>
               );
               break;
           }
-
           return icon;
         },
         tabBarIconStyle: {
           marginTop: 8,
         },
-        tabBarLabel: ({focused, color}) => {
+        tabBarLabel({focused}) {
           return route.name === 'Add' ? null : (
             <TextCT
               text={route.name}
               flex={0}
               size={12}
-              color={focused ? appColors.primary : appColors.gray}
+              color={focused ? appColors.primary : appColors.gray5}
               styles={{
                 marginBottom: Platform.OS === 'android' ? 12 : 0,
               }}
@@ -72,7 +85,7 @@ const TabNavigator = () => {
         },
       })}>
       <Tab.Screen name="Explore" component={ExploreNavigator} />
-      <Tab.Screen name="Event" component={EventNavigator} />
+      <Tab.Screen name="Events" component={EventNavigator} />
       <Tab.Screen name="Add" component={AddNewScreen} />
       <Tab.Screen name="Map" component={MapNavigator} />
       <Tab.Screen name="Profile" component={ProfileNavigator} />

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {appColors} from '../constants/themeColor';
 import {fontFamilies} from '../constants/FontFamilies';
 
@@ -32,7 +32,7 @@ export const globalStyles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   shadow: {
-    shadowColor: 'rgba (0,0,0,0.5)',
+    shadowColor: Platform.OS === 'ios' ? 'rgba (0,0,0,0.3)' : 'rgba(0,0,0,0.5)',
     shadowOffset: {
       width: 0,
       height: 4,
@@ -62,5 +62,14 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: appColors.white,
     margin: 12,
+  },
+  noSpaceCard: {
+    alignItems: 'center',
+    width: 45,
+    height: 45,
+    padding: 0,
+    margin: 0,
+    marginVertical: 0,
+    marginHorizontal: 0,
   },
 });

@@ -48,7 +48,7 @@ const InputCT = (props: Props) => {
         placeholder={placeholder ?? ''}
         onChangeText={val => onChange(val)}
         secureTextEntry={isShowPassword}
-        placeholderTextColor={appColors.placeholder}
+        placeholderTextColor={appColors.text2}
         keyboardType={type ?? 'default'}
         autoCapitalize="none"
         onEndEditing={onEnd}

@@ -9,6 +9,9 @@ import CircleCT from './CircleCT';
 import TagCT from './TagCT';
 import TagBarCT from './TagBarCT';
 import CategoriesList from './CategoriesList';
+import EventItem from './EventItem';
+import CardCT from './CardCT';
+import AvatarGroup from './AvatarGroup';
 
 export {
   SpaceCT,
@@ -22,4 +25,7 @@ export {
   TagBarCT,
   TagCT,
   CategoriesList,
+  EventItem,
+  CardCT,
+  AvatarGroup,
 };

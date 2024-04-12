@@ -8,7 +8,6 @@ import SpaceCT from './SpaceCT';
 import TextCT from './TextCT';
 import RowCT from './RowCT';
 import {Food} from '../assets';
-// import {ChefFork} from '../assets/svgs';
 
 interface Props {
   isColor?: boolean;

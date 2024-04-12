@@ -16,8 +16,9 @@ export const appColors = {
   placeholder: '#747688',
   iconRight: '#3D56F9',
   purple: '#524CE0',
+  purple2: '#A29EF0',
+  purple3: '#5D56F3',
   blue: '#02E9FE',
   blue1: '#00F8FF',
   blue2: '#00F8FF33',
-  
 };

@@ -1,7 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
-  ArrowDown,
-  ArrowRight,
   HambergerMenu,
   Notification,
   SearchNormal1,
@@ -9,23 +6,20 @@ import {
 } from 'iconsax-react-native';
 import React from 'react';
 import {
-  FlatList,
   Platform,
-  SafeAreaView,
+  ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import {ButtonCT, CircleCT, RowCT, SpaceCT, TextCT} from '../../../components';
-import {appColors} from '../../../constants/themeColor';
-import {authSelector, removeAuth} from '../../../redux/reducers/authReducer';
-import {globalStyles} from '../../../styles/globalStyles';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {CircleCT, RowCT, SpaceCT, TextCT} from '../../../components';
 import {fontFamilies} from '../../../constants/FontFamilies';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import {appColors} from '../../../constants/themeColor';
+import {authSelector} from '../../../redux/reducers/authReducer';
+import {globalStyles} from '../../../styles/globalStyles';
 
 const HomeScreen = ({navigation}: any) => {
   const dispatch = useDispatch();
@@ -34,14 +28,7 @@ const HomeScreen = ({navigation}: any) => {
     <View style={[globalStyles.container]}>
       <StatusBar barStyle={'light-content'} />
 
-      <View
-        style={{
-          backgroundColor: appColors.primary,
-          height: 178 + (Platform.OS === 'ios' ? 16 : 0),
-          borderBottomLeftRadius: 40,
-          borderBottomRightRadius: 40,
-          paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 52,
-        }}>
+      <View style={[styles.header]}>
         <View style={{paddingHorizontal: 16}}>
           <RowCT>
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
@@ -54,7 +41,7 @@ const HomeScreen = ({navigation}: any) => {
                   color={appColors.white2}
                   size={12}
                 />
-                <MaterialIcon
+                <MaterialIcons
                   name="arrow-drop-down"
                   size={18}
                   color={appColors.white}
@@ -69,22 +56,10 @@ const HomeScreen = ({navigation}: any) => {
               />
             </View>
 
-            <CircleCT color="#524CE0" size={36}>
+            <CircleCT color={appColors.purple} size={36}>
               <View>
                 <Notification size={18} color={appColors.white} />
-                <View
-                  style={{
-                    backgroundColor: '#02E9FE',
-                    width: 10,
-                    height: 10,
-                    borderRadius: 4,
-                    borderWidth: 2,
-                    borderColor: '#524CE0',
-                    position: 'absolute',
-                    top: -2,
-                    right: -2,
-                  }}
-                />
+                <View style={[styles.iconNotification]} />
               </View>
             </CircleCT>
           </RowCT>
@@ -102,15 +77,8 @@ const HomeScreen = ({navigation}: any) => {
                 size={22}
                 color={appColors.white}
               />
-              <View
-                style={{
-                  width: 1,
-                  height: 18,
-                  marginHorizontal: 12,
-                  backgroundColor: '#A29EF0',
-                }}
-              />
-              <TextCT text="Search..." color={`#A29EF0`} flex={1} />
+              <View style={[styles.searchTxt]} />
+              <TextCT text="Search..." color={appColors.purple2} flex={1} />
             </RowCT>
             <RowCT
               onPress={() =>
@@ -118,24 +86,69 @@ const HomeScreen = ({navigation}: any) => {
                   isFilter: true,
                 })
               }
-              styles={{
-                backgroundColor: '#5D56F3',
-                paddingHorizontal: 12,
-                paddingVertical: 8,
-                borderRadius: 100,
-              }}>
-              <CircleCT size={19.3} color={`#A29EF0`}>
+              styles={[styles.btnFilter]}>
+              <CircleCT size={19.3} color={appColors.purple2}>
                 <Sort size={12} color={appColors.primary} />
               </CircleCT>
               <SpaceCT width={8} />
               <TextCT text="Filters" color={appColors.white} />
             </RowCT>
           </RowCT>
+          <SpaceCT height={24} />
+        </View>
+        <View style={{marginBottom: -14}}>
+          {/* <CategoriesList isColor /> */}
         </View>
       </View>
+      <ScrollView
+        style={[
+          {
+            flex: 1,
+            paddingTop: 40,
+          },
+        ]}>
+        {/* <TagBarCT title="Upcoming Events" onPress={() => {}} />
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={Array.from({length: 5})}
+          renderItem={({item}) => <EventItem type="card" item={item} />}
+        /> */}
+      </ScrollView>
     </View>
   );
 };
 
 export default HomeScreen;
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: appColors.primary,
+    height: 178 + (Platform.OS === 'ios' ? 16 : 0),
+    borderBottomLeftRadius: 40,
+    borderBottomRightRadius: 40,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 52,
+  },
+  btnFilter: {
+    backgroundColor: appColors.purple3,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 100,
+  },
+  searchTxt: {
+    width: 1,
+    height: 18,
+    marginHorizontal: 12,
+    backgroundColor: appColors.purple2,
+  },
+  iconNotification: {
+    backgroundColor: appColors.blue,
+    width: 10,
+    height: 10,
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: appColors.purple,
+    position: 'absolute',
+    top: -2,
+    right: -2,
+  },
+});

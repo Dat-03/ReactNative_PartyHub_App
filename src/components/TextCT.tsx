@@ -11,18 +11,20 @@ interface Props {
   font?: string;
   styles?: StyleProp<TextStyle>;
   title?: boolean;
+  numberOfLine?: number;
 }
 const TextCT = (props: Props) => {
-  const {text, color, size, flex, font, styles, title} = props;
+  const {text, color, size, flex, font, styles, title, numberOfLine} = props;
   const fontSizeDefault = Platform.OS === 'ios' ? 16 : 14;
   return (
     <Text
+      numberOfLines={numberOfLine}
       style={[
         globalStyles.text,
         {
           color: color ?? appColors.text,
-          fontSize: size ? size : title ? 24 : fontSizeDefault,
           flex: flex ?? 0,
+          fontSize: size ? size : title ? 24 : fontSizeDefault,
           fontFamily: font
             ? font
             : title

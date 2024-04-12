@@ -107,7 +107,7 @@ const SocialLogin = ({navigation}: any) => {
         iconFlex="left"
         icon={<Google />}
       />
-      <LoginButton />
+   
       <ButtonCT
         type="primary"
         color={appColors.white}

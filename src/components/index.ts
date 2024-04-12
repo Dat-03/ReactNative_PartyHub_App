@@ -6,6 +6,9 @@ import ContainerCT from './ContainerCT';
 import SectionCT from './SectionCT';
 import RowCT from './RowCT';
 import CircleCT from './CircleCT';
+import TagCT from './TagCT';
+import TagBarCT from './TagBarCT';
+import CategoriesList from './CategoriesList';
 
 export {
   SpaceCT,
@@ -16,4 +19,7 @@ export {
   SectionCT,
   RowCT,
   CircleCT,
+  TagBarCT,
+  TagCT,
+  CategoriesList,
 };

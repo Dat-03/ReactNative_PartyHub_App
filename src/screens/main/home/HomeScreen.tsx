@@ -15,7 +15,13 @@ import {
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
-import {CircleCT, RowCT, SpaceCT, TextCT} from '../../../components';
+import {
+  CategoriesList,
+  CircleCT,
+  RowCT,
+  SpaceCT,
+  TextCT,
+} from '../../../components';
 import {fontFamilies} from '../../../constants/FontFamilies';
 import {appColors} from '../../../constants/themeColor';
 import {authSelector} from '../../../redux/reducers/authReducer';
@@ -97,7 +103,7 @@ const HomeScreen = ({navigation}: any) => {
           <SpaceCT height={24} />
         </View>
         <View style={{marginBottom: -14}}>
-          {/* <CategoriesList isColor /> */}
+          <CategoriesList isColor />
         </View>
       </View>
       <ScrollView

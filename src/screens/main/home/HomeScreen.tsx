@@ -7,6 +7,8 @@ import {
 import React from 'react';
 import {
   FlatList,
+  Image,
+  ImageBackground,
   Platform,
   ScrollView,
   StatusBar,
@@ -17,10 +19,13 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
 import {
+  ButtonCT,
+  CardCT,
   CategoriesList,
   CircleCT,
   EventItem,
   RowCT,
+  SectionCT,
   SpaceCT,
   TagBarCT,
   TextCT,
@@ -29,6 +34,8 @@ import {fontFamilies} from '../../../constants/FontFamilies';
 import {appColors} from '../../../constants/themeColor';
 import {authSelector} from '../../../redux/reducers/authReducer';
 import {globalStyles} from '../../../styles/globalStyles';
+import {images} from '../../../assets';
+import {Text} from 'react-native-svg';
 
 const HomeScreen = ({navigation}: any) => {
   const dispatch = useDispatch();
@@ -41,7 +48,7 @@ const HomeScreen = ({navigation}: any) => {
       title: 'Gala Convention Center',
       address: '36 Guild Street London, UK ',
     },
-    imageUrl:'',
+    imageUrl: '',
     users: '',
     authorId: '',
     startAt: Date.now(),
@@ -131,15 +138,61 @@ const HomeScreen = ({navigation}: any) => {
             paddingTop: 40,
           },
         ]}>
-        <TagBarCT title="Upcoming Events" onPress={() => {}} />
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={Array.from({length: 5})}
-          renderItem={({item}) => <EventItem type="card" 
-          //@ts-ignore
-          item={itemEvent} />}
-        />
+        <SectionCT styles={{paddingHorizontal: 0, paddingTop: 24}}>
+          <TagBarCT title="Upcoming Events" onPress={() => {}} />
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={Array.from({length: 5})}
+            renderItem={({item, index}) => (
+              <EventItem
+                key={`event${index}`}
+                //@ts-ignore
+                item={itemEvent}
+                type="card"
+              />
+            )}
+          />
+        </SectionCT>
+
+        <SectionCT>
+          <View style={styles.ticket}>
+            <SpaceCT height={15} />
+            <View style={{gap: 10}}>
+              <TextCT text="Invite your friends" title size={20} />
+              <TextCT text="Get $20 for ticket" />
+            </View>
+
+            <RowCT justify="flex-start">
+              <TouchableOpacity
+                style={[
+                  globalStyles.button,
+                  {marginTop: 12, backgroundColor: appColors.blue1},
+                ]}>
+                <TextCT text="INVITE" color={appColors.white} />
+              </TouchableOpacity>
+            </RowCT>
+
+            <Image source={images.icon_invite2} style={styles.img} />
+          </View>
+        </SectionCT>
+
+        <SectionCT styles={{paddingHorizontal: 0, paddingTop: 24}}>
+          <TagBarCT title="Upcoming Events" onPress={() => {}} />
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={Array.from({length: 5})}
+            renderItem={({item, index}) => (
+              <EventItem
+                key={`event${index}`}
+                //@ts-ignore
+                item={itemEvent}
+                type="card"
+              />
+            )}
+          />
+        </SectionCT>
       </ScrollView>
     </View>
   );
@@ -176,5 +229,30 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -2,
     right: -2,
+  },
+  img: {
+    position: 'absolute',
+    right: 0,
+    top: 22,
+    bottom: 0,
+    height: 155,
+    width: 200,
+  },
+  ticket: {
+    backgroundColor: appColors.blue3,
+    width: '99%',
+    minHeight: 127,
+    borderRadius: 12,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+  },
+  btnInvite: {
+    width: 72,
+    height: 32,
+    backgroundColor: appColors.blue1,
+    borderRadius: 6,
+    marginTop: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

@@ -44,8 +44,8 @@ const EventItem = (props: Props) => {
               text="JUNE"
             />
           </CardCT>
-          <CardCT styles={[globalStyles.noSpaceCard]} color="#ffffffB3">
-            <MaterialIcons name='bookmark' color={appColors.danger2} size={22} />
+          <CardCT styles={[globalStyles.noSpaceCard,{justifyContent:'center'}]} color="#ffffffB3">
+            <MaterialIcons name='bookmark' color={appColors.danger2} size={25} />
           </CardCT>
         </RowCT>
       </ImageBackground>

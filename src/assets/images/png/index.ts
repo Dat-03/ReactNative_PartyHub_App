@@ -6,4 +6,6 @@ export const images = {
   onBoard2: require('./Onboard_2.png'),
   onBoard3: require('./Onboard_3.png'),
   itemCard1: require('./ItemCard_1.png'),
+  icon_invite: require('./img_invite.png'),
+  icon_invite2: require('./icon_invite.png'),
 };

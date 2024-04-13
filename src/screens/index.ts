@@ -4,6 +4,7 @@ import ForgotPassword from './auth/ForgotPassword';
 import LoginScreen from './auth/LoginScreen';
 import SignUpScreen from './auth/SignUpScreen';
 import Verification from './auth/Verification';
+import EventDetail from './main/events/EventDetail';
 import EventScreen from './main/events/EventScreen';
 import SearchEvents from './main/events/SearchEvents';
 import HomeScreen from './main/home/HomeScreen';
@@ -22,4 +23,5 @@ export {
   SignUpScreen,
   SplashScreen,
   Verification,
+  EventDetail,
 };

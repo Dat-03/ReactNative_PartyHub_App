@@ -13,6 +13,7 @@ import {images} from '../assets';
 import {fontFamilies} from '../constants/FontFamilies';
 import {globalStyles} from '../styles/globalStyles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {useNavigation} from '@react-navigation/native';
 interface Props {
   item: EventModel;
   type: 'card' | 'list';
@@ -20,11 +21,12 @@ interface Props {
 
 const EventItem = (props: Props) => {
   const {item, type} = props;
+  const navigation: any = useNavigation();
   return (
     <CardCT
       isShadow
       styles={{width: appInfo.sizes.WIDTH * 0.7}}
-      onPress={() => {}}>
+      onPress={() => navigation.navigate('EventDetail', {item})}>
       <ImageBackground
         style={{flex: 1, marginTop: 12, height: 131, padding: 10}}
         source={images.itemCard1}
@@ -44,13 +46,20 @@ const EventItem = (props: Props) => {
               text="JUNE"
             />
           </CardCT>
-          <CardCT styles={[globalStyles.noSpaceCard,{justifyContent:'center'}]} color="#ffffffB3">
-            <MaterialIcons name='bookmark' color={appColors.danger2} size={25} />
+          <CardCT
+            styles={[globalStyles.noSpaceCard, {justifyContent: 'center'}]}
+            color="#ffffffB3">
+            <MaterialIcons
+              name="bookmark"
+              color={appColors.danger2}
+              size={25}
+            />
           </CardCT>
         </RowCT>
       </ImageBackground>
       <TextCT text={item.title} title size={18} numberOfLine={1} />
       <AvatarGroup />
+
       <RowCT>
         <Location size={18} color={appColors.text3} variant="Bold" />
         <SpaceCT width={8} />
@@ -59,6 +68,7 @@ const EventItem = (props: Props) => {
           size={12}
           color={appColors.text2}
           numberOfLine={1}
+          styles={{marginRight: 45}}
         />
       </RowCT>
     </CardCT>

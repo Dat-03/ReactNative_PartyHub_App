@@ -127,7 +127,7 @@ const HomeScreen = ({navigation}: any) => {
           </RowCT>
           <SpaceCT height={24} />
         </View>
-        <View style={{marginBottom: -14}}>
+        <View style={{marginBottom: -16}}>
           <CategoriesList isColor />
         </View>
       </View>
@@ -135,7 +135,7 @@ const HomeScreen = ({navigation}: any) => {
         style={[
           {
             flex: 1,
-            paddingTop: 40,
+            marginTop: Platform.OS === 'ios' ? 22 : 18,
           },
         ]}>
         <SectionCT styles={{paddingHorizontal: 0, paddingTop: 24}}>

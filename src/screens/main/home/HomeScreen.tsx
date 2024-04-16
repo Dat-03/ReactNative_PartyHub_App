@@ -4,7 +4,7 @@ import {
   SearchNormal1,
   Sort,
 } from 'iconsax-react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   FlatList,
   Image,
@@ -35,11 +35,40 @@ import {appColors} from '../../../constants/themeColor';
 import {authSelector} from '../../../redux/reducers/authReducer';
 import {globalStyles} from '../../../styles/globalStyles';
 import {images} from '../../../assets';
-import {Text} from 'react-native-svg';
+import Geolocation from '@react-native-community/geolocation';
+import axios from 'axios';
+import {AddressModel} from '../../../models/AddressModel';
 
 const HomeScreen = ({navigation}: any) => {
   const dispatch = useDispatch();
   const auth = useSelector(authSelector);
+  const [currentLocation, setCurrentLocation] = useState<AddressModel>();
+
+  // APP ID: 3VgR8g9SmufJ2K4rMVHF
+  // KEY API: oRgDXZViwTLwpt4zC4tQQUJgb_EJxV95qEW_hxRHDT8
+  useEffect(() => {
+    Geolocation.getCurrentPosition(position => {
+      if (position.coords) {
+        reverseGeocode({
+          long: position.coords.longitude,
+          lat: position.coords.latitude,
+        });
+      }
+    });
+  }, []);
+  const reverseGeocode = async ({long, lat}: {lat: number; long: number}) => {
+    const api = `https://revgeocode.search.hereapi.com/v1/revgeocode?at=${lat},${long}&lang=vi-VI&apikey=oRgDXZViwTLwpt4zC4tQQUJgb_EJxV95qEW_hxRHDT8`;
+    try {
+      const res = await axios(api);
+      if (res && res.status === 200 && res.data) {
+        const items = res.data.items;
+        setCurrentLocation(items[0]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const itemEvent = {
     title: 'International Band Music Concert',
     description:
@@ -78,13 +107,15 @@ const HomeScreen = ({navigation}: any) => {
                   color={appColors.white}
                 />
               </RowCT>
-              <TextCT
-                text="New York, USA"
-                flex={0}
-                color={appColors.white}
-                font={fontFamilies.medium}
-                size={13}
-              />
+              {currentLocation && (
+                <TextCT
+                  text={`${currentLocation.address.city}, ${currentLocation.address.county}`}
+                  flex={0}
+                  color={appColors.white}
+                  font={fontFamilies.medium}
+                  size={13}
+                />
+              )}
             </View>
 
             <CircleCT color={appColors.purple} size={36}>
@@ -150,7 +181,6 @@ const HomeScreen = ({navigation}: any) => {
                 //@ts-ignore
                 item={itemEvent}
                 type="card"
-                
               />
             )}
           />

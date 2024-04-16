@@ -27,7 +27,7 @@ import {
   RowCT,
   SectionCT,
   SpaceCT,
-  TagBarCT,
+  TabBarCT,
   TextCT,
 } from '../../../components';
 import {fontFamilies} from '../../../constants/FontFamilies';
@@ -139,7 +139,7 @@ const HomeScreen = ({navigation}: any) => {
           },
         ]}>
         <SectionCT styles={{paddingHorizontal: 0, paddingTop: 24}}>
-          <TagBarCT title="Upcoming Events" onPress={() => {}} />
+          <TabBarCT title="Upcoming Events" onPress={() => {}} />
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -150,6 +150,7 @@ const HomeScreen = ({navigation}: any) => {
                 //@ts-ignore
                 item={itemEvent}
                 type="card"
+                
               />
             )}
           />
@@ -178,7 +179,7 @@ const HomeScreen = ({navigation}: any) => {
         </SectionCT>
 
         <SectionCT styles={{paddingHorizontal: 0, paddingTop: 24}}>
-          <TagBarCT title="Upcoming Events" onPress={() => {}} />
+          <TabBarCT title="Upcoming Events" onPress={() => {}} />
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}

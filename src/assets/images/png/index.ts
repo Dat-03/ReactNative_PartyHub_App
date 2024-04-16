@@ -8,4 +8,5 @@ export const images = {
   itemCard1: require('./ItemCard_1.png'),
   icon_invite: require('./img_invite.png'),
   icon_invite2: require('./icon_invite.png'),
+  img_EventDetail: require('./img_eventdetail.png'),
 };

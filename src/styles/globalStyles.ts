@@ -71,5 +71,7 @@ export const globalStyles = StyleSheet.create({
     margin: 0,
     marginVertical: 0,
     marginHorizontal: 0,
+    justifyContent: 'center',
+    marginBottom: 0,
   },
 });

@@ -1,31 +1,31 @@
-import SpaceCT from './SpaceCT';
-import TextCT from './TextCT';
-import ButtonCT from './ButtonCT';
-import InputCT from './InputCT';
-import ContainerCT from './ContainerCT';
-import SectionCT from './SectionCT';
-import RowCT from './RowCT';
-import CircleCT from './CircleCT';
-import TagCT from './TagCT';
-import TagBarCT from './TagBarCT';
-import CategoriesList from './CategoriesList';
-import EventItem from './EventItem';
-import CardCT from './CardCT';
 import AvatarGroup from './AvatarGroup';
+import ButtonCT from './ButtonCT';
+import CardCT from './CardCT';
+import CategoriesList from './CategoriesList';
+import CircleCT from './CircleCT';
+import ContainerCT from './ContainerCT';
+import EventItem from './EventItem';
+import InputCT from './InputCT';
+import RowCT from './RowCT';
+import SectionCT from './SectionCT';
+import SpaceCT from './SpaceCT';
+import TabBarCT from './TabBarCT';
+import TagCT from './TagCT';
+import TextCT from './TextCT';
 
 export {
-  SpaceCT,
-  TextCT,
-  ButtonCT,
-  InputCT,
-  ContainerCT,
-  SectionCT,
-  RowCT,
-  CircleCT,
-  TagBarCT,
-  TagCT,
-  CategoriesList,
-  EventItem,
-  CardCT,
   AvatarGroup,
+  ButtonCT,
+  CardCT,
+  CategoriesList,
+  CircleCT,
+  ContainerCT,
+  EventItem,
+  InputCT,
+  RowCT,
+  SectionCT,
+  SpaceCT,
+  TabBarCT,
+  TagCT,
+  TextCT,
 };

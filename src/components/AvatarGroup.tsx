@@ -7,7 +7,12 @@ import {fontFamilies} from '../constants/FontFamilies';
 import CircleCT from './CircleCT';
 import SpaceCT from './SpaceCT';
 
-const AvatarGroup = () => {
+interface Props {
+  size?: number;
+}
+
+const AvatarGroup = (props: Props) => {
+  const {size} = props;
   const imgUrl =
     'https://i.pinimg.com/736x/61/76/5b/61765bf86da23dda12932c820296d413.jpg';
   return (
@@ -17,8 +22,8 @@ const AvatarGroup = () => {
           key={`img${index}`}
           source={{uri: imgUrl}}
           style={{
-            width: 24,
-            height: 24,
+            width: size ?? 24,
+            height: size ?? 24,
             borderRadius: 100,
             borderWidth: 2,
             marginLeft: index > 0 ? -8 : 0,
@@ -29,7 +34,7 @@ const AvatarGroup = () => {
       <SpaceCT width={12} />
       <TextCT
         text="+20 Going"
-        size={12}
+        size={12 + (size ? (size - 24) / 5 : 0)}
         color={appColors.primary}
         font={fontFamilies.semiBold}
       />

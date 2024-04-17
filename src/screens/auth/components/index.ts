@@ -1,3 +1,3 @@
 import SocialLogin from './SocialLogin';
 
-export {SocialLogin};
+export {SocialLogin };

@@ -5,6 +5,7 @@ import {
   ImageBackground,
   SafeAreaView,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 import React, {ReactNode} from 'react';
 import {globalStyles} from '../styles/globalStyles';
@@ -12,7 +13,7 @@ import {Image} from 'react-native-svg';
 import {images} from '../assets/images/png';
 import {useNavigation} from '@react-navigation/native';
 import {ButtonCT, RowCT, TextCT} from '.';
-import {ArrowLeft} from 'iconsax-react-native';
+import {ArrowLeft, Status} from 'iconsax-react-native';
 import {appColors} from '../constants/themeColor';
 import {fontFamilies} from '../constants/FontFamilies';
 interface Props {
@@ -29,7 +30,7 @@ const ContainerCT = (props: Props) => {
 
   const headerCT = () => {
     return (
-      <View style={{flex: 1, paddingTop: 30}}>
+      <View style={{flex: 1}}>
         {(title || back) && (
           <RowCT
             styles={{
@@ -80,7 +81,8 @@ const ContainerCT = (props: Props) => {
     </ImageBackground>
   ) : (
     <SafeAreaView style={[globalStyles.container]}>
-      <View>{headerCT()}</View>
+      <StatusBar barStyle={'dark-content'} />
+      <View style={[globalStyles.container]}>{headerCT()}</View>
     </SafeAreaView>
   );
 };

@@ -46,6 +46,8 @@ const HomeScreen = ({navigation}: any) => {
 
   // APP ID: 3VgR8g9SmufJ2K4rMVHF
   // KEY API: oRgDXZViwTLwpt4zC4tQQUJgb_EJxV95qEW_hxRHDT8
+  // AIzaSyA0EoaUbRecSYIPIfpfEslYbBckTRmF_yM
+  
   useEffect(() => {
     Geolocation.getCurrentPosition(position => {
       if (position.coords) {

@@ -2,11 +2,14 @@ import {blue} from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
 
 export const appColors = {
   primary: '#5669FF',
+  primary2:'#5568FF',
   white: '#ffffff',
   white2: '#fcfcfc',
   white3: '#ffffff0d',
   white4:'#ffffff4D',
   white5:'#f3f3f3',
+  white6:'#ffffffB3',
+  white7:'#FBFCFF',
   black1: '#000000f2',
   text: '#120D26',
   text2: '#747688',

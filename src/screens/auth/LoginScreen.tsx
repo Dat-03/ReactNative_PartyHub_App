@@ -25,7 +25,7 @@ const LoginScreen: React.FC = ({navigation}: any) => {
   const [isRemember, setIsRemember] = useState(true);
   const dispatch = useDispatch();
   const [isDisable, setIsDisable] = useState(true);
-
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const emailValidation = Validate.email(email);
 
@@ -39,6 +39,7 @@ const LoginScreen: React.FC = ({navigation}: any) => {
   const handleLogin = async () => {
     const emailValidation = Validate.email(email);
     if (emailValidation) {
+      setIsLoading(true);
       try {
         const res = await authenticationAPI.HandleAuthentication(
           '/login',
@@ -50,8 +51,10 @@ const LoginScreen: React.FC = ({navigation}: any) => {
           'auth',
           isRemember ? JSON.stringify(res.data) : email,
         );
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
+        setIsLoading(false);
       }
     } else {
       Alert.alert('Email is not valid');
@@ -107,7 +110,7 @@ const LoginScreen: React.FC = ({navigation}: any) => {
 
       <SectionCT>
         <ButtonCT
-          disable={isDisable}
+          disable={isLoading || isDisable}
           onPress={handleLogin}
           text="SIGN IN"
           type="primary"

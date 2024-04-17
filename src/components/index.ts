@@ -2,6 +2,7 @@ import AvatarGroup from './AvatarGroup';
 import ButtonCT from './ButtonCT';
 import CardCT from './CardCT';
 import CategoriesList from './CategoriesList';
+import ChoiceLocation from './ChoiceLocation';
 import CircleCT from './CircleCT';
 import ContainerCT from './ContainerCT';
 import EventItem from './EventItem';
@@ -28,4 +29,5 @@ export {
   TabBarCT,
   TagCT,
   TextCT,
+  ChoiceLocation,
 };

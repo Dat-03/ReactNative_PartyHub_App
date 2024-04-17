@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "483037659079",
+    "project_id": "partyhub-419907",
+    "storage_bucket": "partyhub-419907.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483037659079:android:06f479ec5d23c4b60963e2",
+        "android_client_info": {
+          "package_name": "com.PartyHub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483037659079-q3bkbk15du4t1jtjimqvo5hqsnfih9vd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.PartyHub",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "483037659079-fn327u7lp3ider59bqvjsnr8hs3jahcv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZcyZTOYFS551Zo9PMNx3X5LnFFFBfohc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483037659079-fn327u7lp3ider59bqvjsnr8hs3jahcv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

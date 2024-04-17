@@ -81,7 +81,7 @@ export const globalStyles = StyleSheet.create({
     borderColor: appColors.gray3,
     width: '100%',
     minHeight: 56,
-    paddingVertical: 14,
+    // paddingVertical: 14,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 15,

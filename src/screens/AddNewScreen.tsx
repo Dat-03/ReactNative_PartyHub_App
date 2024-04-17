@@ -1,6 +1,13 @@
 import {View, Text} from 'react-native';
 import React, {useState} from 'react';
-import {ButtonCT, ChoiceLocation, ContainerCT, InputCT, SectionCT, TextCT} from '../components';
+import {
+  ButtonCT,
+  ChoiceLocation,
+  ContainerCT,
+  InputCT,
+  SectionCT,
+  TextCT,
+} from '../components';
 import {authSelector} from '../redux/reducers/authReducer';
 import {useSelector} from 'react-redux';
 
@@ -54,7 +61,17 @@ const AddNewScreen = () => {
           onChange={val => handleChangeValue('description', val)}
           allowClear
         />
-        <ChoiceLocation/>
+        <InputCT
+          placeholder="Title address"
+          multiline
+          numberOfLines={3}
+          value={eventData.location.title}
+          onChange={val =>
+            handleChangeValue('location', {...eventData.location, title: val})
+          }
+          allowClear
+        />
+        <ChoiceLocation />
       </SectionCT>
       <SectionCT>
         <ButtonCT text="Add new" type="primary" onPress={handleAddEvent} />

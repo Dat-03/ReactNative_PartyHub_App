@@ -8,6 +8,14 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import {LocationModal} from '../modal';
 const ChoiceLocation = () => {
   const [isVibleModalLocation, setIsVibleModalLocation] = useState(false);
+  const [addressSelected, setAddressSelected] = useState<{
+    address: string;
+    position?: {
+      lat: number;
+      long: number;
+    };
+  }>();
+
   return (
     <>
       <RowCT
@@ -16,13 +24,18 @@ const ChoiceLocation = () => {
         <Location color={`${appColors.primary}80`} size={22} variant="Bold" />
 
         <SpaceCT width={12} />
-        <TextCT text="Newyork, USA" flex={1} />
+        <TextCT
+          numberOfLine={1}
+          text={addressSelected ? addressSelected.address : 'Choice'}
+          flex={1}
+        />
+
         <ArrowRight2 color={appColors.primary} size={22} />
       </RowCT>
       <LocationModal
         visible={isVibleModalLocation}
         onClose={() => setIsVibleModalLocation(false)}
-        onSelect={val => console.log(val)}
+        onSelect={val => setAddressSelected(val)}
       />
     </>
   );

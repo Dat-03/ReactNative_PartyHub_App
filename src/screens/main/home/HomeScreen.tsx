@@ -38,16 +38,22 @@ import {images} from '../../../assets';
 import Geolocation from '@react-native-community/geolocation';
 import axios from 'axios';
 import {AddressModel} from '../../../models/AddressModel';
-
+import Geocoder from 'react-native-geocoding';
+// APP ID: 3VgR8g9SmufJ2K4rMVHF
+// KEY API: oRgDXZViwTLwpt4zC4tQQUJgb_EJxV95qEW_hxRHDT8
+// AIzaSyA0EoaUbRecSYIPIfpfEslYbBckTRmF_yM
+Geocoder.init(process.env.MAP_API_KEY as string);
 const HomeScreen = ({navigation}: any) => {
   const dispatch = useDispatch();
   const auth = useSelector(authSelector);
   const [currentLocation, setCurrentLocation] = useState<AddressModel>();
-
-  // APP ID: 3VgR8g9SmufJ2K4rMVHF
-  // KEY API: oRgDXZViwTLwpt4zC4tQQUJgb_EJxV95qEW_hxRHDT8
-  // AIzaSyA0EoaUbRecSYIPIfpfEslYbBckTRmF_yM
   
+  // 10.857783, 106.619719
+  // useEffect(() => {
+  //   reverseGeocode({lat: 10.857783, long: 106.619719});
+  // }, []);
+
+  // console.log(process.env.MAP_API_KEY);
   useEffect(() => {
     Geolocation.getCurrentPosition(position => {
       if (position.coords) {

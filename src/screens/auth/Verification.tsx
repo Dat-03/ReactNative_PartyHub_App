@@ -23,7 +23,7 @@ const Verification = ({navigation, route}: any) => {
   const [currentCode, setCurrentCode] = useState<string>(code);
   const [codeValues, setCodeValues] = useState<string[]>([]);
   const [newCode, setNewCode] = useState('');
-  const [limit, setLimit] = useState(120);
+  const [limit, setLimit] = useState(60);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
@@ -183,7 +183,7 @@ const Verification = ({navigation, route}: any) => {
                 globalStyles.iconContainer,
                 {
                   backgroundColor:
-                    newCode.length === 4 ? appColors.gray : appColors.primary,
+                    newCode.length === 4 ? appColors.primary2 : appColors.gray,
                 },
               ]}>
               <ArrowRight size={18} color={appColors.white} />

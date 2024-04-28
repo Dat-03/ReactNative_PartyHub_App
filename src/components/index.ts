@@ -5,6 +5,7 @@ import CategoriesList from './CategoriesList';
 import ChoiceLocation from './ChoiceLocation';
 import CircleCT from './CircleCT';
 import ContainerCT from './ContainerCT';
+import DateTimePicker from './DateTimePicker';
 import EventItem from './EventItem';
 import InputCT from './InputCT';
 import RowCT from './RowCT';
@@ -30,4 +31,5 @@ export {
   TagCT,
   TextCT,
   ChoiceLocation,
+  DateTimePicker,
 };

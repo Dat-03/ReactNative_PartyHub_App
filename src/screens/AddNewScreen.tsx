@@ -4,8 +4,11 @@ import {
   ButtonCT,
   ChoiceLocation,
   ContainerCT,
+  DateTimePicker,
   InputCT,
+  RowCT,
   SectionCT,
+  SpaceCT,
   TextCT,
 } from '../components';
 import {authSelector} from '../redux/reducers/authReducer';
@@ -33,7 +36,7 @@ const AddNewScreen = () => {
     authorId: auth.id,
   });
 
-  const handleChangeValue = (key: string, value: string) => {
+  const handleChangeValue = (key: string, value: string | Date) => {
     const items = {...eventData};
     items[`${key}`] = value;
     setEventData(items);
@@ -61,10 +64,29 @@ const AddNewScreen = () => {
           onChange={val => handleChangeValue('description', val)}
           allowClear
         />
+        <RowCT>
+          <DateTimePicker
+            label="Start at"
+            type="time"
+            onSelect={val => handleChangeValue('startAt', val)}
+            Selected={eventData.startAt}
+          />
+          <SpaceCT width={20} />
+          <DateTimePicker
+            label="End at"
+            type="time"
+            onSelect={val => handleChangeValue('endAt', val)}
+            Selected={eventData.endAt}
+          />
+        </RowCT>
+        <DateTimePicker
+          label="Date"
+          type="date"
+          onSelect={val => handleChangeValue('date', val)}
+          Selected={eventData.date}
+        />
         <InputCT
           placeholder="Title address"
-          multiline
-          numberOfLines={3}
           value={eventData.location.title}
           onChange={val =>
             handleChangeValue('location', {...eventData.location, title: val})

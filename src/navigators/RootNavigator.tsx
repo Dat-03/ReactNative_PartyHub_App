@@ -1,12 +1,10 @@
-import AsyncStorage, {
-  useAsyncStorage,
-} from '@react-native-async-storage/async-storage';
+import {useAsyncStorage} from '@react-native-async-storage/async-storage';
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {addAuth, authSelector} from '../redux/reducers/authReducer';
+import {SplashScreen} from '../screens';
 import AuthNavigator from './AuthNavigator';
 import MainNavigator from './MainNavigator';
-import {SplashScreen} from '../screens';
-import {addAuth, authSelector} from '../redux/reducers/authReducer';
 
 const RootNavigator = () => {
   const [isShowSplash, setIsShowSplash] = useState(true);

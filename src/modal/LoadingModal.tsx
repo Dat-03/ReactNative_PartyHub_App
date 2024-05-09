@@ -1,6 +1,5 @@
-import {View, Text, Modal, ActivityIndicator} from 'react-native';
 import React from 'react';
-import {globalStyles} from '../styles/globalStyles';
+import {ActivityIndicator, Modal, View} from 'react-native';
 import {TextCT} from '../components';
 import {appColors} from '../constants/themeColor';
 

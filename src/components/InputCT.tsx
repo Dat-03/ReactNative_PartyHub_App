@@ -1,18 +1,15 @@
+import React, {ReactNode, useState} from 'react';
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  StyleSheet,
   KeyboardType,
   StyleProp,
+  TextInput,
+  TouchableOpacity,
+  View,
   ViewStyle,
 } from 'react-native';
-import React, {ReactNode, useState} from 'react';
-import {EyeSlash} from 'iconsax-react-native';
-import {appColors} from '../constants/themeColor';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {appColors} from '../constants/themeColor';
 import {globalStyles} from '../styles/globalStyles';
 
 interface Props {
@@ -88,6 +85,7 @@ const InputCT = (props: Props) => {
             color={appColors.gray}
           />
         ) : (
+          value &&
           value.length > 0 &&
           allowClear && (
             <AntDesign name="close" size={22} color={appColors.text} />

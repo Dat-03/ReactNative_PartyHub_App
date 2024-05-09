@@ -1,8 +1,9 @@
-import {View, Text, StyleProp, TextStyle, Platform} from 'react-native';
 import React from 'react';
-import {appColors} from '../constants/themeColor';
+import {Platform, StyleProp, Text, TextStyle} from 'react-native';
 import {fontFamilies} from '../constants/FontFamilies';
+import {appColors} from '../constants/themeColor';
 import {globalStyles} from '../styles/globalStyles';
+
 interface Props {
   text: string;
   color?: string;
@@ -11,14 +12,17 @@ interface Props {
   font?: string;
   styles?: StyleProp<TextStyle>;
   title?: boolean;
-  numberOfLine?: number;
+  numOfLine?: number;
 }
-const TextCT = (props: Props) => {
-  const {text, color, size, flex, font, styles, title, numberOfLine} = props;
+
+const TextComponent = (props: Props) => {
+  const {text, size, flex, font, color, styles, title, numOfLine} = props;
+
   const fontSizeDefault = Platform.OS === 'ios' ? 16 : 14;
+
   return (
     <Text
-      numberOfLines={numberOfLine}
+      numberOfLines={numOfLine}
       style={[
         globalStyles.text,
         {
@@ -38,4 +42,4 @@ const TextCT = (props: Props) => {
   );
 };
 
-export default TextCT;
+export default TextComponent;

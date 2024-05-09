@@ -1,3 +1,5 @@
+import Geolocation from '@react-native-community/geolocation';
+import axios from 'axios';
 import {
   HambergerMenu,
   Notification,
@@ -8,7 +10,6 @@ import React, {useEffect, useState} from 'react';
 import {
   FlatList,
   Image,
-  ImageBackground,
   Platform,
   ScrollView,
   StatusBar,
@@ -16,11 +17,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Geocoder from 'react-native-geocoding';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
+import {images} from '../../../assets';
 import {
-  ButtonCT,
-  CardCT,
   CategoriesList,
   CircleCT,
   EventItem,
@@ -32,28 +33,16 @@ import {
 } from '../../../components';
 import {fontFamilies} from '../../../constants/FontFamilies';
 import {appColors} from '../../../constants/themeColor';
+import {AddressModel} from '../../../models/AddressModel';
 import {authSelector} from '../../../redux/reducers/authReducer';
 import {globalStyles} from '../../../styles/globalStyles';
-import {images} from '../../../assets';
-import Geolocation from '@react-native-community/geolocation';
-import axios from 'axios';
-import {AddressModel} from '../../../models/AddressModel';
-import Geocoder from 'react-native-geocoding';
-// APP ID: 3VgR8g9SmufJ2K4rMVHF
-// KEY API: oRgDXZViwTLwpt4zC4tQQUJgb_EJxV95qEW_hxRHDT8
-// AIzaSyA0EoaUbRecSYIPIfpfEslYbBckTRmF_yM
+
 Geocoder.init(process.env.MAP_API_KEY as string);
 const HomeScreen = ({navigation}: any) => {
   const dispatch = useDispatch();
   const auth = useSelector(authSelector);
   const [currentLocation, setCurrentLocation] = useState<AddressModel>();
-  
-  // 10.857783, 106.619719
-  // useEffect(() => {
-  //   reverseGeocode({lat: 10.857783, long: 106.619719});
-  // }, []);
 
-  // console.log(process.env.MAP_API_KEY);
   useEffect(() => {
     Geolocation.getCurrentPosition(position => {
       if (position.coords) {

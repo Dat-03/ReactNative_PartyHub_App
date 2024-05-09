@@ -1,13 +1,13 @@
-import {View, Text, FlatList} from 'react-native';
 import React, {ReactNode} from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {globalStyles} from '../styles/globalStyles';
+import {FlatList} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {Food} from '../assets';
 import {appColors} from '../constants/themeColor';
+import {globalStyles} from '../styles/globalStyles';
+import RowCT from './RowCT';
 import SpaceCT from './SpaceCT';
 import TextCT from './TextCT';
-import RowCT from './RowCT';
-import {Food} from '../assets';
 
 interface Props {
   isColor?: boolean;

@@ -1,16 +1,15 @@
+import React, {ReactNode} from 'react';
 import {
-  View,
-  Text,
   StyleProp,
-  ViewStyle,
   TextStyle,
   TouchableOpacity,
+  View,
+  ViewStyle,
 } from 'react-native';
-import React, {ReactNode} from 'react';
 import {TextCT} from '.';
-import {globalStyles} from '../styles/globalStyles';
-import {appColors} from '../constants/themeColor';
 import {fontFamilies} from '../constants/FontFamilies';
+import {appColors} from '../constants/themeColor';
+import {globalStyles} from '../styles/globalStyles';
 
 interface Props {
   icon?: ReactNode;

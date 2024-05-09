@@ -1,42 +1,29 @@
+import {ArrowLeft, ArrowRight, Calendar, Location} from 'iconsax-react-native';
+import React from 'react';
 import {
-  View,
-  Text,
+  Image,
   ImageBackground,
   ScrollView,
   TouchableOpacity,
-  Platform,
-  StatusBar,
-  Image,
-  Button,
+  View,
 } from 'react-native';
-import React from 'react';
+import LinearGradient from 'react-native-linear-gradient';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {images} from '../../../assets';
 import {
   AvatarGroup,
   ButtonCT,
   CardCT,
-  ContainerCT,
   RowCT,
   SectionCT,
   SpaceCT,
   TabBarCT,
   TextCT,
 } from '../../../components';
-import {images} from '../../../assets';
-import {appInfo} from '../../../constants/appInfos';
-import {
-  ArrowLeft,
-  ArrowLeft2,
-  ArrowRight,
-  Calendar,
-  Location,
-} from 'iconsax-react-native';
-import {appColors} from '../../../constants/themeColor';
-import {globalStyles} from '../../../styles/globalStyles';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import LinearGradient from 'react-native-linear-gradient';
-import {EventModel} from '../../../models/EventModel';
 import {fontFamilies} from '../../../constants/FontFamilies';
-import {Line} from 'react-native-svg';
+import {appColors} from '../../../constants/themeColor';
+import {EventModel} from '../../../models/EventModel';
+import {globalStyles} from '../../../styles/globalStyles';
 
 const EventDetail = ({navigation, route}: any) => {
   const {item}: {item: EventModel} = route.params;

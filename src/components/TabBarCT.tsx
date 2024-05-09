@@ -13,7 +13,7 @@ const TabBarCT = (props: Props) => {
 
   return (
     <RowCT onPress={onPress} styles={{marginBottom: 12, paddingHorizontal: 16}}>
-      <TextCT numberOfLine={1} size={18} title text={title} flex={1} />
+      <TextCT numOfLine={1} size={18} title text={title} flex={1} />
       {onPress && (
         <RowCT>
           <TextCT text="See All " color={appColors.gray} />

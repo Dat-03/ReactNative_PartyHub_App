@@ -1,11 +1,10 @@
-import {View, Text, Image} from 'react-native';
 import React from 'react';
-import RowCT from './RowCT';
-import TextCT from './TextCT';
-import {appColors} from '../constants/themeColor';
+import {Image} from 'react-native';
 import {fontFamilies} from '../constants/FontFamilies';
-import CircleCT from './CircleCT';
+import {appColors} from '../constants/themeColor';
+import RowCT from './RowCT';
 import SpaceCT from './SpaceCT';
+import TextCT from './TextCT';
 
 interface Props {
   size?: number;

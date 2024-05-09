@@ -1,43 +1,38 @@
-import {View, Text} from 'react-native';
+import {Calendar, Clock} from 'iconsax-react-native';
 import React, {useState} from 'react';
+import {View} from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import TextCT from './TextCT';
-import {ArrowDown2, Calendar, Clock} from 'iconsax-react-native';
-import {appColors} from '../constants/themeColor';
-import RowCT from './RowCT';
-import {globalStyles} from '../styles/globalStyles';
 import {fontFamilies} from '../constants/FontFamilies';
+import {appColors} from '../constants/themeColor';
+import {globalStyles} from '../styles/globalStyles';
 import {DateTime} from '../utils/DateTime';
+import RowCT from './RowCT';
+import TextCT from './TextCT';
 
 interface Props {
-  Selected?: Date;
+  selected?: Date;
   type: 'date' | 'time';
   onSelect: (val: Date) => void;
   label?: string;
 }
 
 const DateTimePicker = (props: Props) => {
-  const {Selected, type, onSelect, label} = props;
+  const {type, onSelect, selected, label} = props;
   const [isShowDatePicker, setIsShowDatePicker] = useState(false);
-  console.log(Selected);
+
   return (
     <View style={{flex: 1}}>
-      {label && (
-        <TextCT
-          text={label}
-          font={fontFamilies.medium}
-          styles={{marginBottom: 5}}
-        />
-      )}
+      {label && <TextCT text={label} styles={{marginBottom: 8}} />}
+
       <RowCT
         styles={[globalStyles.inputContainer]}
         onPress={() => setIsShowDatePicker(true)}>
         <TextCT
-          text={`${
-            Selected
+          text={` ${
+            selected
               ? type === 'time'
-                ? DateTime.GetTime(Selected)
-                : DateTime.GetDate(Selected)
+                ? DateTime.GetTime(selected)
+                : DateTime.GetDate(selected)
               : 'Choice'
           }`}
           flex={1}
@@ -52,9 +47,10 @@ const DateTimePicker = (props: Props) => {
       </RowCT>
       <DatePicker
         mode={type}
+        open={isShowDatePicker}
         date={new Date()}
         modal
-        open={isShowDatePicker}
+        onCancel={() => setIsShowDatePicker(false)}
         onConfirm={val => {
           setIsShowDatePicker(false);
           onSelect(val);

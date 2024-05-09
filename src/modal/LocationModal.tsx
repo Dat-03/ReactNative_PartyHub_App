@@ -1,20 +1,20 @@
 import Geolocation from '@react-native-community/geolocation';
 import axios from 'axios';
-import { SearchNormal1 } from 'iconsax-react-native';
-import React, { useEffect, useState } from 'react';
+import {SearchNormal1} from 'iconsax-react-native';
+import React, {useEffect, useState} from 'react';
 import {
   ActivityIndicator,
   FlatList,
   Modal,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 import GetCoder from 'react-native-geocoding';
 import MapView from 'react-native-maps';
-import { ButtonCT, InputCT, RowCT, SpaceCT, TextCT } from '../components';
-import { appInfo } from '../constants/appInfos';
-import { appColors } from '../constants/themeColor';
-import { LocationModel } from '../models/LocationModel';
+import {ButtonCT, InputCT, RowCT, SpaceCT, TextCT} from '../components';
+import {appInfo} from '../constants/appInfos';
+import {appColors} from '../constants/themeColor';
+import {LocationModel} from '../models/LocationModel';
 
 GetCoder.init(process.env.MAP_API_KEY as string);
 interface Props {
@@ -88,7 +88,7 @@ const LocationModal = (props: Props) => {
 
   return (
     <Modal animationType="slide" visible={visible} style={{flex: 1}}>
-      <View style={{paddingVertical: 42}}>
+      <View style={{paddingVertical: 40}}>
         <RowCT
           justify="flex-end"
           styles={{marginVertical: 20, paddingHorizontal: 20}}>
@@ -106,7 +106,7 @@ const LocationModal = (props: Props) => {
           <View
             style={{
               position: 'absolute',
-              top: 56,
+              top: 58,
               left: 10,
               right: 10,
               backgroundColor: appColors.white,

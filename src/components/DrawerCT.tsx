@@ -1,24 +1,5 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Platform,
-  StatusBar,
-  TouchableOpacity,
-  Image,
-  FlatList,
-} from 'react-native';
-import React from 'react';
-import {globalStyles} from '../styles/globalStyles';
-import RowCT from './RowCT';
-import ButtonCT from './ButtonCT';
-import {appColors} from '../constants/themeColor';
-import TextCT from './TextCT';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import SpaceCT from './SpaceCT';
-import {useDispatch, useSelector} from 'react-redux';
-import {authSelector, removeAuth} from '../redux/reducers/authReducer';
-import {Screen} from 'react-native-screens';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {
   Bookmark2,
   Calendar,
@@ -29,9 +10,25 @@ import {
   Sms,
   User,
 } from 'iconsax-react-native';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react';
+import {
+  FlatList,
+  Image,
+  Platform,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {LoginManager} from 'react-native-fbsdk-next';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useDispatch, useSelector} from 'react-redux';
+import {appColors} from '../constants/themeColor';
+import {authSelector, removeAuth} from '../redux/reducers/authReducer';
+import {globalStyles} from '../styles/globalStyles';
+import RowCT from './RowCT';
+import SpaceCT from './SpaceCT';
+import TextCT from './TextCT';
 const DrawerCT = ({navigation}: any) => {
   const user = useSelector(authSelector);
   const dispatch = useDispatch();

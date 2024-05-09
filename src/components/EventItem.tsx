@@ -1,19 +1,19 @@
-import {View, Text, ImageBackground} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {Location} from 'iconsax-react-native';
 import React from 'react';
-import CardCT from './CardCT';
-import TextCT from './TextCT';
-import {EventModel} from '../models/EventModel';
-import {appInfo} from '../constants/appInfos';
-import AvatarGroup from './AvatarGroup';
-import RowCT from './RowCT';
-import {Bookmark, Bookmark2, Car, Location} from 'iconsax-react-native';
-import {appColors} from '../constants/themeColor';
-import SpaceCT from './SpaceCT';
+import {ImageBackground} from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {images} from '../assets';
 import {fontFamilies} from '../constants/FontFamilies';
+import {appInfo} from '../constants/appInfos';
+import {appColors} from '../constants/themeColor';
+import {EventModel} from '../models/EventModel';
 import {globalStyles} from '../styles/globalStyles';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {useNavigation} from '@react-navigation/native';
+import AvatarGroup from './AvatarGroup';
+import CardCT from './CardCT';
+import RowCT from './RowCT';
+import SpaceCT from './SpaceCT';
+import TextCT from './TextCT';
 interface Props {
   item: EventModel;
   type: 'card' | 'list';
@@ -57,7 +57,7 @@ const EventItem = (props: Props) => {
           </CardCT>
         </RowCT>
       </ImageBackground>
-      <TextCT text={item.title} title size={18} numberOfLine={1} />
+      <TextCT text={item.title} title size={18} numOfLine={1} />
       <AvatarGroup />
 
       <RowCT>
@@ -67,7 +67,7 @@ const EventItem = (props: Props) => {
           text={item.location.address}
           size={12}
           color={appColors.text2}
-          numberOfLine={1}
+          numOfLine={1}
           styles={{marginRight: 45}}
         />
       </RowCT>

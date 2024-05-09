@@ -1,21 +1,19 @@
+import {useNavigation} from '@react-navigation/native';
+import {ArrowLeft} from 'iconsax-react-native';
+import React, {ReactNode} from 'react';
 import {
-  View,
-  Text,
-  ScrollView,
   ImageBackground,
   SafeAreaView,
-  TouchableOpacity,
+  ScrollView,
   StatusBar,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import React, {ReactNode} from 'react';
-import {globalStyles} from '../styles/globalStyles';
-import {Image} from 'react-native-svg';
+import {RowCT, TextCT} from '.';
 import {images} from '../assets/images/png';
-import {useNavigation} from '@react-navigation/native';
-import {ButtonCT, RowCT, TextCT} from '.';
-import {ArrowLeft, Status} from 'iconsax-react-native';
-import {appColors} from '../constants/themeColor';
 import {fontFamilies} from '../constants/FontFamilies';
+import {appColors} from '../constants/themeColor';
+import {globalStyles} from '../styles/globalStyles';
 interface Props {
   isImageBackground?: boolean;
   isScroll?: boolean;

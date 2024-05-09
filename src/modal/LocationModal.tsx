@@ -1,23 +1,20 @@
+import Geolocation from '@react-native-community/geolocation';
+import axios from 'axios';
+import { SearchNormal1 } from 'iconsax-react-native';
+import React, { useEffect, useState } from 'react';
 import {
-  View,
-  Text,
-  Modal,
-  TouchableOpacity,
   ActivityIndicator,
   FlatList,
+  Modal,
+  TouchableOpacity,
+  View
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {ButtonCT, InputCT, RowCT, SpaceCT, TextCT} from '../components';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import {appColors} from '../constants/themeColor';
-import {SearchNormal, SearchNormal1} from 'iconsax-react-native';
-import axios from 'axios';
-import {LocationModel} from '../models/LocationModel';
-import MapView, {Marker} from 'react-native-maps';
-import {appInfo} from '../constants/appInfos';
-import {AddressModel} from '../models/AddressModel';
-import Geolocation from '@react-native-community/geolocation';
 import GetCoder from 'react-native-geocoding';
+import MapView from 'react-native-maps';
+import { ButtonCT, InputCT, RowCT, SpaceCT, TextCT } from '../components';
+import { appInfo } from '../constants/appInfos';
+import { appColors } from '../constants/themeColor';
+import { LocationModel } from '../models/LocationModel';
 
 GetCoder.init(process.env.MAP_API_KEY as string);
 interface Props {

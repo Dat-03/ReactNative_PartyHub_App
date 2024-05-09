@@ -6,6 +6,7 @@ import ChoiceLocation from './ChoiceLocation';
 import CircleCT from './CircleCT';
 import ContainerCT from './ContainerCT';
 import DateTimePicker from './DateTimePicker';
+import DropDownPicker from './DropDownPicker';
 import EventItem from './EventItem';
 import InputCT from './InputCT';
 import RowCT from './RowCT';
@@ -32,4 +33,5 @@ export {
   TextCT,
   ChoiceLocation,
   DateTimePicker,
+  DropDownPicker,
 };

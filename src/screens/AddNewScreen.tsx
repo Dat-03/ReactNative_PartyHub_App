@@ -5,6 +5,7 @@ import {
   ChoiceLocation,
   ContainerCT,
   DateTimePicker,
+  DropDownPicker,
   InputCT,
   RowCT,
   SectionCT,
@@ -13,6 +14,8 @@ import {
 } from '../components';
 import {authSelector} from '../redux/reducers/authReducer';
 import {useSelector} from 'react-redux';
+import userApi from '../apis/userApi';
+import userAPI from '../apis/userApi';
 
 const initValues = {
   title: '',
@@ -31,6 +34,7 @@ const initValues = {
 
 const AddNewScreen = () => {
   const auth = useSelector(authSelector);
+
   const [eventData, setEventData] = useState<any>({
     ...initValues,
     authorId: auth.id,
@@ -42,7 +46,8 @@ const AddNewScreen = () => {
     setEventData(items);
   };
   const handleAddEvent = async () => {
-    console.log(eventData);
+    const res = await userAPI.HandleUser('/get-all');
+    console.log(res);
   };
   return (
     <ContainerCT isScroll>
@@ -84,6 +89,12 @@ const AddNewScreen = () => {
           type="date"
           onSelect={val => handleChangeValue('date', val)}
           Selected={eventData.date}
+        />
+        <DropDownPicker
+          label="Invited User"
+          onSelect={(val: string) => console.log(val)}
+          selected={undefined}
+          value={[]}
         />
         <InputCT
           placeholder="Title address"

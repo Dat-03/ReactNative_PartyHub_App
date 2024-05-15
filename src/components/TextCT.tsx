@@ -1,6 +1,6 @@
 import React from 'react';
 import {Platform, StyleProp, Text, TextStyle} from 'react-native';
-import {fontFamilies} from '../constants/FontFamilies';
+import {fontFamilies} from '../constants/fontFamilies';
 import {appColors} from '../constants/themeColor';
 import {globalStyles} from '../styles/globalStyles';
 

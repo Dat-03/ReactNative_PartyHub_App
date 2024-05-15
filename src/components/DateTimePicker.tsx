@@ -2,7 +2,7 @@ import {Calendar, Clock} from 'iconsax-react-native';
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import {fontFamilies} from '../constants/FontFamilies';
+import {fontFamilies} from '../constants/fontFamilies';
 import {appColors} from '../constants/themeColor';
 import {globalStyles} from '../styles/globalStyles';
 import {DateTime} from '../utils/DateTime';

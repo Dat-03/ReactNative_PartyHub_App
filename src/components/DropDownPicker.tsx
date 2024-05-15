@@ -6,7 +6,7 @@ import {Portal} from 'react-native-portalize';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ButtonCT, InputCT, RowCT, SpaceCT, TextCT} from '.';
-import {fontFamilies} from '../constants/FontFamilies';
+import {fontFamilies} from '../constants/fontFamilies';
 import {appColors} from '../constants/themeColor';
 import {SelectModel} from '../models/SelectModel';
 import {globalStyles} from '../styles/globalStyles';

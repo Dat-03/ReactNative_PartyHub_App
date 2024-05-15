@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image} from 'react-native';
-import {fontFamilies} from '../constants/FontFamilies';
+import {fontFamilies} from '../constants/fontFamilies';
 import {appColors} from '../constants/themeColor';
 import RowCT from './RowCT';
 import SpaceCT from './SpaceCT';

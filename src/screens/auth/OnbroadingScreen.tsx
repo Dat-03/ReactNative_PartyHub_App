@@ -6,7 +6,7 @@ import Swiper from 'react-native-swiper';
 import {appInfo} from '../../constants/appInfos';
 import {appColors} from '../../constants/themeColor';
 import {TextCT} from '../../components';
-import {fontFamilies} from '../../constants/FontFamilies';
+import {fontFamilies} from '../../constants/fontFamilies';
 
 const OnbroadingScreen: React.FC = ({navigation}: any) => {
   const [index, setIndex] = useState(0);

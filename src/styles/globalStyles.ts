@@ -1,6 +1,6 @@
 import {Platform, StyleSheet} from 'react-native';
 import {appColors} from '../constants/themeColor';
-import {fontFamilies} from '../constants/FontFamilies';
+import {fontFamilies} from '../constants/fontFamilies';
 
 export const globalStyles = StyleSheet.create({
   container: {

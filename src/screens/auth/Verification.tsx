@@ -9,7 +9,7 @@ import {
   TextCT,
 } from '../../components';
 import {appColors} from '../../constants/themeColor';
-import {fontFamilies} from '../../constants/FontFamilies';
+import {fontFamilies} from '../../constants/fontFamilies';
 import {ArrowRight} from 'iconsax-react-native';
 import {globalStyles} from '../../styles/globalStyles';
 import authenticationAPI from '../../apis/authApi';

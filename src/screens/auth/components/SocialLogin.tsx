@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Facebook, Google} from '../../../assets';
 import {ButtonCT, SectionCT, SpaceCT, TextCT} from '../../../components';
-import {fontFamilies} from '../../../constants/FontFamilies';
+import {fontFamilies} from '../../../constants/fontFamilies';
 import {appColors} from '../../../constants/themeColor';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {useDispatch} from 'react-redux';

@@ -152,24 +152,12 @@ const AddNewScreen = ({navigation}: any) => {
           <></>
         )}
         <ButtonImagePicker
-          onSelect={val =>
+          onSelect={(val: any) =>
             val.type === 'url'
               ? handleChangeValue('photoUrl', val.value as string)
-              : setFileSelected(val.value)
+              : handleFileSelected(val.value)
           }
         />
-
-        {eventData.photoUrl || fileSelected ? (
-          <Image
-            source={{
-              uri: eventData.photoUrl ? eventData.photoUrl : fileSelected.uri,
-            }}
-            style={{width: '100%', height: 250, marginBottom: 12}}
-            resizeMode="cover"
-          />
-        ) : (
-          <></>
-        )}
 
         <InputCT
           placeholder="Title"

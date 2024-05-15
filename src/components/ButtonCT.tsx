@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {TextCT} from '.';
-import {fontFamilies} from '../constants/FontFamilies';
+import {fontFamilies} from '../constants/fontFamilies';
 import {appColors} from '../constants/themeColor';
 import {globalStyles} from '../styles/globalStyles';
 

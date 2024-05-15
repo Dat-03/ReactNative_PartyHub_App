@@ -6,7 +6,7 @@ import {Portal} from 'react-native-portalize';
 import {InputCT, RowCT, SpaceCT, TextCT} from '.';
 import {Camera, Image, Link} from 'iconsax-react-native';
 import {appColors} from '../constants/themeColor';
-import {fontFamilies} from '../constants/FontFamilies';
+import {fontFamilies} from '../constants/fontFamilies';
 import ImageCropPicker, {
   ImageOrVideo,
   Options,

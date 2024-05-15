@@ -4,7 +4,7 @@ import React from 'react';
 import {ImageBackground} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {images} from '../assets';
-import {fontFamilies} from '../constants/FontFamilies';
+import {fontFamilies} from '../constants/fontFamilies';
 import {appInfo} from '../constants/appInfos';
 import {appColors} from '../constants/themeColor';
 import {EventModel} from '../models/EventModel';

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import {RowCT, TextCT} from '.';
 import {images} from '../assets/images/png';
-import {fontFamilies} from '../constants/FontFamilies';
+import {fontFamilies} from '../constants/fontFamilies';
 import {appColors} from '../constants/themeColor';
 import {globalStyles} from '../styles/globalStyles';
 interface Props {

@@ -31,7 +31,7 @@ import {
   TabBarCT,
   TextCT,
 } from '../../../components';
-import {fontFamilies} from '../../../constants/FontFamilies';
+import {fontFamilies} from '../../../constants/fontFamilies';
 import {appColors} from '../../../constants/themeColor';
 import {AddressModel} from '../../../models/AddressModel';
 import {authSelector} from '../../../redux/reducers/authReducer';

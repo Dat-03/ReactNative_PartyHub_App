@@ -21,6 +21,8 @@ import {appColors} from '../constants/themeColor';
 import {SelectModel} from '../models/SelectModel';
 import {authSelector} from '../redux/reducers/authReducer';
 import {Validate} from '../utils/Validate';
+import {EventModel} from '../models/EventModel';
+import eventAPI from '../apis/eventApi';
 
 const initValues = {
   title: '',
@@ -58,7 +60,6 @@ const AddNewScreen = ({navigation}: any) => {
 
   useEffect(() => {
     const mess = Validate.EventValidation(eventData);
-
     setErrorsMess(mess);
   }, [eventData]);
 
@@ -117,9 +118,19 @@ const AddNewScreen = ({navigation}: any) => {
             .getDownloadURL()
             .then(url => {
               eventData.photoUrl = url;
+              hanldePustEvent(eventData);
             });
         },
       );
+    }
+  };
+  const hanldePustEvent = async (event: EventModel) => {
+    const api = '/add-new';
+    try {
+      const res = await eventAPI.HandleEvent(api, event, 'post');
+      console.log(res);
+    } catch (error) {
+      console.log(error);
     }
   };
 

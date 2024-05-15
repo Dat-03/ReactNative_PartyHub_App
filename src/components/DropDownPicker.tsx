@@ -19,7 +19,7 @@ interface Props {
   multible?: boolean;
 }
 
-const DropdownPicker = (props: Props) => {
+const DropDownPicker = (props: Props) => {
   const {onSelect, selected, values, label, multible} = props;
   const [searchKey, setSearchKey] = useState('');
   const [isVisibleModalize, setIsVisibleModalize] = useState(false);
@@ -195,7 +195,7 @@ const DropdownPicker = (props: Props) => {
   );
 };
 
-export default DropdownPicker;
+export default DropDownPicker;
 
 const localStyles = StyleSheet.create({
   listItem: {

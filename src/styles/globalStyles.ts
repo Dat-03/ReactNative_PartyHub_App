@@ -32,7 +32,7 @@ export const globalStyles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   shadow: {
-    shadowColor: Platform.OS === 'ios' ? 'rgba (0,0,0,0.3)' : 'rgba(0,0,0,0.5)',
+    shadowColor: Platform.OS === 'ios' ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.5)',
     shadowOffset: {
       width: 0,
       height: 4,

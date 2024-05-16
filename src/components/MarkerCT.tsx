@@ -7,12 +7,11 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface Props {
-  onPress?: () => void;
   type: string;
 }
 
 const MarkerCT = (props: Props) => {
-  const {type, onPress} = props;
+  const {type} = props;
   console.log(type);
 
   const renderIcon = (type: string) => {
@@ -38,22 +37,20 @@ const MarkerCT = (props: Props) => {
     return icon;
   };
   return (
-    <TouchableOpacity onPress={onPress}>
-      <ImageBackground
-        imageStyle={{resizeMode: 'contain', width: 56, height: 56}}
-        source={images.border_location}
-        style={[
-          globalStyles.shadow,
-          {
-            width: 56,
-            height: 56,
-            justifyContent: 'center',
-            alignItems: 'center',
-          },
-        ]}>
-        {renderIcon(type)}
-      </ImageBackground>
-    </TouchableOpacity>
+    <ImageBackground
+      imageStyle={{resizeMode: 'contain', width: 56, height: 56}}
+      source={images.border_location}
+      style={[
+        globalStyles.shadow,
+        {
+          width: 56,
+          height: 56,
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+      ]}>
+      {renderIcon(type)}
+    </ImageBackground>
   );
 };
 

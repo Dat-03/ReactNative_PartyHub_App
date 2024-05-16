@@ -1,4 +1,4 @@
-import {View, Text, StatusBar, TouchableOpacity} from 'react-native';
+import {View, Text, StatusBar, TouchableOpacity, FlatList} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import MapView, {Marker} from 'react-native-maps';
 import {appInfo} from '../../../constants/appInfos';
@@ -7,6 +7,7 @@ import {
   ButtonCT,
   CardCT,
   CategoriesList,
+  EventItem,
   InputCT,
   MarkerCT,
   RowCT,
@@ -29,7 +30,7 @@ const MapScreen = ({navigation}: any) => {
   const [events, setEvents] = useState<EventModel[]>([]);
   useEffect(() => {
     Geolocation.getCurrentPosition(
-      position => {
+      (position: any) => {
         if (position.coords) {
           setCurrentLocation({
             lat: position.coords.latitude,
@@ -37,7 +38,7 @@ const MapScreen = ({navigation}: any) => {
           });
         }
       },
-      error => {
+      (error: any) => {
         console.log(error);
       },
       {},
@@ -95,19 +96,7 @@ const MapScreen = ({navigation}: any) => {
                   longitude: event.position.long,
                 }}
                 onPress={() => console.log('pressed')}>
-                <View
-                  style={{
-                    padding: 12,
-                    backgroundColor: appColors.white,
-                    borderRadius: 12,
-                    width: 56,
-                    height: 56,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <Food_color />
-                </View>
-                <MarkerCT type={event.category} onPress={() => {}} />
+                <MarkerCT type={event.category} />
               </Marker>
             ))}
         </MapView>
@@ -158,6 +147,21 @@ const MapScreen = ({navigation}: any) => {
         </RowCT>
         <SpaceCT height={20} />
         <CategoriesList />
+      </View>
+      <View
+        style={{
+          position: 'absolute',
+          bottom: 10,
+          left: 0,
+          right: 0,
+        }}>
+        <FlatList
+          initialScrollIndex={0}
+          data={events}
+          renderItem={({item}) => <EventItem item={item} type="list" />}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
       </View>
     </View>
   );

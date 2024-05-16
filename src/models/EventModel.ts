@@ -17,7 +17,7 @@ export interface EventModel {
   users: string[];
   date: number;
 
-  // followers?: string[];
+  followers?: string[];
 }
 
 export interface Position {

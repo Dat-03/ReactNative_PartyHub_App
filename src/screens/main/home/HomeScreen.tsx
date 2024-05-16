@@ -25,6 +25,7 @@ import {
   CategoriesList,
   CircleCT,
   EventItem,
+  LoadingItem,
   RowCT,
   SectionCT,
   SpaceCT,
@@ -36,23 +37,37 @@ import {appColors} from '../../../constants/themeColor';
 import {AddressModel} from '../../../models/AddressModel';
 import {authSelector} from '../../../redux/reducers/authReducer';
 import {globalStyles} from '../../../styles/globalStyles';
+import eventAPI from '../../../apis/eventApi';
+import {EventModel} from '../../../models/EventModel';
 
 Geocoder.init(process.env.MAP_API_KEY as string);
 const HomeScreen = ({navigation}: any) => {
-  const dispatch = useDispatch();
-  const auth = useSelector(authSelector);
   const [currentLocation, setCurrentLocation] = useState<AddressModel>();
+  const [events, setEvents] = useState<EventModel[]>([]);
+  const [nearByEvents, setNearByEvents] = useState<EventModel[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    Geolocation.getCurrentPosition(position => {
-      if (position.coords) {
-        reverseGeocode({
-          long: position.coords.longitude,
-          lat: position.coords.latitude,
-        });
-      }
-    });
+    Geolocation.getCurrentPosition(
+      (position: any) => {
+        if (position.coords) {
+          reverseGeocode({
+            long: position.coords.longitude,
+            lat: position.coords.latitude,
+          });
+        }
+      },
+      (error: any) => {
+        console.log(error);
+      },
+      {},
+    );
+    getEvents();
   }, []);
+  useEffect(() => {
+    currentLocation &&
+      getEvents(currentLocation.position.lat, currentLocation.position.lng);
+  }, [currentLocation]);
   const reverseGeocode = async ({long, lat}: {lat: number; long: number}) => {
     const api = `https://revgeocode.search.hereapi.com/v1/revgeocode?at=${lat},${long}&lang=vi-VI&apikey=oRgDXZViwTLwpt4zC4tQQUJgb_EJxV95qEW_hxRHDT8`;
     try {
@@ -66,21 +81,26 @@ const HomeScreen = ({navigation}: any) => {
     }
   };
 
-  const itemEvent = {
-    title: 'International Band Music Concert',
-    description:
-      'Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase.',
-    location: {
-      title: 'Gala Convention Center',
-      address: '36 Guild Street London, UK ',
-    },
-    imageUrl: '',
-    users: '',
-    authorId: '',
-    startAt: Date.now(),
-    endAt: Date.now(),
-    Date: Date.now(),
+  const getEvents = async (lat?: number, long?: number, distance?: number) => {
+    const api = `${
+      lat && long
+        ? `/get-events?lat=${lat}&long${long}&distance${distance ?? 5}&limit=5`
+        : `/get-events?limit=5`
+    }`;
+    //&date=${new Date().toISOString()}`;
+    setIsLoading(true);
+    try {
+      const res = await eventAPI.HandleEvent(api);
+      res &&
+        res.data &&
+        (lat && long ? setNearByEvents(res.data) : setEvents(res.data));
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+    }
   };
+
   return (
     <View style={[globalStyles.container]}>
       <StatusBar barStyle={'light-content'} />
@@ -168,19 +188,19 @@ const HomeScreen = ({navigation}: any) => {
         ]}>
         <SectionCT styles={{paddingHorizontal: 0, paddingTop: 24}}>
           <TabBarCT title="Upcoming Events" onPress={() => {}} />
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={Array.from({length: 5})}
-            renderItem={({item, index}) => (
-              <EventItem
-                key={`event${index}`}
-                //@ts-ignore
-                item={itemEvent}
-                type="card"
-              />
-            )}
-          />
+
+          {events.length > 0 ? (
+            <FlatList
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={events}
+              renderItem={({item, index}) => (
+                <EventItem key={`event${index}`} item={item} type="card" />
+              )}
+            />
+          ) : (
+            <LoadingItem isLoading={isLoading} values={events.length} />
+          )}
         </SectionCT>
 
         <SectionCT>
@@ -206,20 +226,19 @@ const HomeScreen = ({navigation}: any) => {
         </SectionCT>
 
         <SectionCT styles={{paddingHorizontal: 0, paddingTop: 24}}>
-          <TabBarCT title="Upcoming Events" onPress={() => {}} />
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={Array.from({length: 5})}
-            renderItem={({item, index}) => (
-              <EventItem
-                key={`event${index}`}
-                //@ts-ignore
-                item={itemEvent}
-                type="card"
-              />
-            )}
-          />
+          <TabBarCT title="Nearby You" onPress={() => {}} />
+          {nearByEvents.length > 0 ? (
+            <FlatList
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              data={nearByEvents}
+              renderItem={({item, index}) => (
+                <EventItem key={`event${index}`} item={item} type="card" />
+              )}
+            />
+          ) : (
+            <LoadingItem isLoading={isLoading} values={nearByEvents.length} />
+          )}
         </SectionCT>
       </ScrollView>
     </View>

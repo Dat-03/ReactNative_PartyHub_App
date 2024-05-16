@@ -18,6 +18,7 @@ import TabBarCT from './TabBarCT';
 import TagCT from './TagCT';
 import TextCT from './TextCT';
 import MarkerCT from './MarkerCT';
+import LoadingItem from './LoadingItem';
 
 export {
   AvatarGroup,
@@ -40,5 +41,6 @@ export {
   DrawerCT,
   ButtonImagePicker,
   MarkerCT,
+  LoadingItem,
   
 };

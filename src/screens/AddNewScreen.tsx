@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {Image} from 'react-native';
 import {ImageOrVideo} from 'react-native-image-crop-picker';
 import {useSelector} from 'react-redux';
+import eventAPI from '../apis/eventApi';
 import userAPI from '../apis/userApi';
 import {
   ButtonCT,
@@ -18,11 +19,10 @@ import {
   TextCT,
 } from '../components';
 import {appColors} from '../constants/themeColor';
+import {EventModel} from '../models/EventModel';
 import {SelectModel} from '../models/SelectModel';
 import {authSelector} from '../redux/reducers/authReducer';
 import {Validate} from '../utils/Validate';
-import {EventModel} from '../models/EventModel';
-import eventAPI from '../apis/eventApi';
 
 const initValues = {
   title: '',
@@ -128,7 +128,9 @@ const AddNewScreen = ({navigation}: any) => {
     const api = '/add-new';
     try {
       const res = await eventAPI.HandleEvent(api, event, 'post');
-      console.log(res);
+      navigation.navigate('Explore', {
+        screen: 'HomeScreen',
+      });
     } catch (error) {
       console.log(error);
     }

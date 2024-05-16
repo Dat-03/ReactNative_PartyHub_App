@@ -9,4 +9,5 @@ export const images = {
   icon_invite: require('./img_invite.png'),
   icon_invite2: require('./icon_invite.png'),
   img_EventDetail: require('./img_eventdetail.png'),
+  border_location: require('./border_location.png'),
 };

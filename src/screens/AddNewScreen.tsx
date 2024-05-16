@@ -153,7 +153,6 @@ const AddNewScreen = ({navigation}: any) => {
     <ContainerCT isScroll>
       <SectionCT>
         <TextCT text="Add new" title />
-        <TextCT text='Test github' title/>
       </SectionCT>
       <SectionCT>
         {eventData.photoUrl || fileSelected ? (

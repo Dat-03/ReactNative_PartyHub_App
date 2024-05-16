@@ -64,7 +64,7 @@ const EventItem = (props: Props) => {
         <Location size={18} color={appColors.text3} variant="Bold" />
         <SpaceCT width={8} />
         <TextCT
-          text={item.location.address}
+          text={item.locationAddress}
           size={12}
           color={appColors.text2}
           numOfLine={1}

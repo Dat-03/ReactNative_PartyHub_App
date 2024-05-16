@@ -1,23 +1,20 @@
 import React, {ReactNode} from 'react';
 import {FlatList} from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {Food} from '../assets';
 import {appColors} from '../constants/themeColor';
-import {globalStyles} from '../styles/globalStyles';
-import RowCT from './RowCT';
-import SpaceCT from './SpaceCT';
-import TextCT from './TextCT';
+import {Food, Food_color} from '../assets';
+import {TagCT} from '.';
 
 interface Props {
   isColor?: boolean;
 }
 
 interface Category {
-  key: string;
-  title: string;
   icon: ReactNode;
-  iconColor: string;
+  color: string;
+  label: string;
+  key: string;
 }
 
 const CategoriesList = (props: Props) => {
@@ -25,76 +22,71 @@ const CategoriesList = (props: Props) => {
 
   const categories: Category[] = [
     {
-      key: '1',
+      key: 'sports',
+      label: 'Sports',
       icon: (
-        <Ionicons
-          name="basketball"
-          size={22}
-          color={isColor ? appColors.white : '#EE544A'}
+        <FontAwesome5
+          name="basketball-ball"
+          color={isColor ? appColors.white : '#F0635A'}
+          size={20}
         />
       ),
-      iconColor: '#EE544A',
-      title: 'Sports',
+      color: '#F0635A',
     },
     {
-      key: '2',
+      key: 'mucsic',
+      label: 'Music',
       icon: (
-        <FontAwesome
+        <FontAwesome5
           name="music"
-          size={22}
           color={isColor ? appColors.white : '#F59762'}
+          size={20}
         />
       ),
-      iconColor: '#F59762',
-      title: 'Music',
+      color: '#F59762',
     },
     {
-      key: '3',
-      icon: <Food color={isColor ? appColors.white : '#29D697'} />,
-      iconColor: '#29D697',
-      title: 'Food',
+      key: 'food',
+      label: 'Food',
+      icon: isColor ? (
+        <Food color={isColor ? appColors.white : '#29D697'} />
+      ) : (
+        <Food_color color={isColor ? appColors.white : '#29D697'} />
+      ),
+      color: '#29D697',
     },
     {
-      key: '4',
+      key: 'art',
+      label: 'Art',
       icon: (
         <Ionicons
-          name="color-palette-sharp"
-          size={22}
+          name="color-palette"
           color={isColor ? appColors.white : '#46CDFB'}
         />
       ),
-      iconColor: '#46CDFB',
-      title: 'Art',
+      color: '#46CDFB',
     },
   ];
-
-  const renderTagCategory = (item: Category) => {
-    return (
-      <RowCT
-        onPress={() => {}}
-        styles={[
-          globalStyles.tag,
-          {
-            backgroundColor: isColor ? item.iconColor : appColors.white,
-          },
-        ]}>
-        {item.icon}
-        <SpaceCT width={8} />
-        <TextCT
-          text={item.title}
-          color={isColor ? appColors.white : appColors.gray}
-        />
-      </RowCT>
-    );
-  };
 
   return (
     <FlatList
       style={{paddingHorizontal: 16}}
-      showsHorizontalScrollIndicator={false}
       horizontal
+      showsHorizontalScrollIndicator={false}
       data={categories}
-      renderItem={({item}) => renderTagCategory(item)}
+      renderItem={({item, index}) => (
+        <TagCT
+          styles={{
+            marginRight: index === categories.length - 1 ? 28 : 12,
+            minWidth: 82,
+          }}
+          bgColor={isColor ? item.color : appColors.white}
+          onPress={() => {}}
+          icon={item.icon}
+          label={item.label}
+          textColor={isColor ? appColors.white : appColors.text2}
+        />
+      )}
     />
   );
 };

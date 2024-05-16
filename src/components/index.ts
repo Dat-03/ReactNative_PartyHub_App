@@ -17,6 +17,7 @@ import SpaceCT from './SpaceCT';
 import TabBarCT from './TabBarCT';
 import TagCT from './TagCT';
 import TextCT from './TextCT';
+import MarkerCT from './MarkerCT';
 
 export {
   AvatarGroup,
@@ -38,5 +39,6 @@ export {
   DropDownPicker,
   DrawerCT,
   ButtonImagePicker,
+  MarkerCT,
   
 };

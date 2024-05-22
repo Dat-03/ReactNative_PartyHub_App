@@ -24,16 +24,20 @@ import {fontFamilies} from '../../../constants/fontFamilies';
 import {appColors} from '../../../constants/themeColor';
 import {EventModel} from '../../../models/EventModel';
 import {globalStyles} from '../../../styles/globalStyles';
-import {useSelector} from 'react-redux';
-import {authSelector} from '../../../redux/reducers/authReducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {AuthState, authSelector} from '../../../redux/reducers/authReducer';
 import eventAPI from '../../../apis/eventApi';
 import {LoadingModal} from '../../../modal';
+import {UserHanlde} from '../../../utils/UserHandle';
+import {DateTime} from '../../../utils/DateTime';
+import {appInfo} from '../../../constants/appInfos';
 
 const EventDetail = ({navigation, route}: any) => {
   const {item}: {item: EventModel} = route.params;
   const [isLoading, setIsLoading] = useState(false);
   const [followers, setFollowers] = useState<string[]>([]);
-  const auth = useSelector(authSelector);
+  const auth: AuthState = useSelector(authSelector);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     item && getFollowersbyId();
@@ -53,6 +57,7 @@ const EventDetail = ({navigation, route}: any) => {
   };
   console.log(followers);
   const handleUpdateFollowers = async (data: string[]) => {
+    await UserHanlde.getFollowerById(auth.id, dispatch);
     const api = `/update-followes`;
     setIsLoading(true);
     try {
@@ -64,10 +69,8 @@ const EventDetail = ({navigation, route}: any) => {
         },
         'post',
       );
-      setIsLoading(false);
     } catch (error) {
       console.log(error);
-      setIsLoading(false);
     }
   };
   const getFollowersbyId = async () => {
@@ -113,14 +116,14 @@ const EventDetail = ({navigation, route}: any) => {
                 onPress={handleFollower}
                 styles={[globalStyles.noSpaceCard, {width: 36, height: 36}]}
                 color={
-                  followers.includes(auth.id)
+                  auth.follow_events && auth.follow_events.includes(item._id)
                     ? appColors.white6
                     : appColors.white4
                 }>
                 <MaterialIcons
                   name="bookmark"
                   color={
-                    followers.includes(auth.id)
+                    auth.follow_events && auth.follow_events.includes(item._id)
                       ? appColors.danger2
                       : appColors.white
                   }
@@ -200,12 +203,14 @@ const EventDetail = ({navigation, route}: any) => {
                 <View
                   style={{flex: 1, height: 48, justifyContent: 'space-around'}}>
                   <TextCT
-                    text="14 December, 2021"
+                    text={`${DateTime.GetDate(new Date(item.date))}`}
                     font={fontFamilies.medium}
                     size={16}
                   />
                   <TextCT
-                    text="Tuesday, 4:00PM - 9:00PM"
+                    text={`${
+                      appInfo.dayNames[new Date(item.date).getDay()]
+                    } , ${DateTime.GetStartAndEnd(item.startAt, item.endAt)}`}
                     color={appColors.gray}
                   />
                 </View>

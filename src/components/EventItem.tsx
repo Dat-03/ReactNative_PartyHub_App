@@ -12,7 +12,7 @@ import {appColors} from '../constants/themeColor';
 import {fontFamilies} from '../constants/fontFamilies';
 import {images} from '../assets';
 import {useSelector} from 'react-redux';
-import {authSelector} from '../redux/reducers/authReducer';
+import {AuthState, authSelector} from '../redux/reducers/authReducer';
 import {numberToString} from '../utils/NumberofString';
 
 interface Props {
@@ -22,7 +22,7 @@ interface Props {
 
 const EventItem = (props: Props) => {
   const {item, type} = props;
-  const auth = useSelector(authSelector);
+  const auth: AuthState = useSelector(authSelector);
   const navigation: any = useNavigation();
 
   // console.log(new Date(item.date).toISOString());
@@ -58,7 +58,7 @@ const EventItem = (props: Props) => {
                   ].substring(0, 3)}
                 />
               </CardCT>
-              {item.followers && item.followers.includes(auth.id) && (
+              {auth.follow_events && auth.follow_events.includes(item._id) && (
                 <CardCT
                   styles={[globalStyles.noSpaceCard]}
                   color={appColors.white6}>

@@ -1,5 +1,5 @@
 import {ArrowLeft, ArrowRight, Calendar, Location} from 'iconsax-react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Image,
   ImageBackground,
@@ -24,15 +24,66 @@ import {fontFamilies} from '../../../constants/fontFamilies';
 import {appColors} from '../../../constants/themeColor';
 import {EventModel} from '../../../models/EventModel';
 import {globalStyles} from '../../../styles/globalStyles';
+import {useSelector} from 'react-redux';
+import {authSelector} from '../../../redux/reducers/authReducer';
+import eventAPI from '../../../apis/eventApi';
+import {LoadingModal} from '../../../modal';
 
 const EventDetail = ({navigation, route}: any) => {
   const {item}: {item: EventModel} = route.params;
-  const avatarDefault =
-    'https://i.pinimg.com/736x/61/76/5b/61765bf86da23dda12932c820296d413.jpg';
+  const [isLoading, setIsLoading] = useState(false);
+  const [followers, setFollowers] = useState<string[]>([]);
+  const auth = useSelector(authSelector);
+
+  useEffect(() => {
+    item && getFollowersbyId();
+  }, [item]);
+  const handleFollower = () => {
+    const items = [...followers];
+    if (items.includes(auth.id)) {
+      const index = items.findIndex(element => element === auth.id);
+      if (index !== -1) {
+        items.splice(index, 1);
+      }
+    } else {
+      items.push(auth.id);
+    }
+    setFollowers(items);
+    handleUpdateFollowers(items);
+  };
+  console.log(followers);
+  const handleUpdateFollowers = async (data: string[]) => {
+    const api = `/update-followes`;
+    setIsLoading(true);
+    try {
+      await eventAPI.HandleEvent(
+        api,
+        {
+          id: item._id,
+          followers: data,
+        },
+        'post',
+      );
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+  const getFollowersbyId = async () => {
+    const api = `/followers?id=${item._id}`;
+
+    try {
+      const res = await eventAPI.HandleEvent(api);
+      res && res.data && setFollowers(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <View style={{flex: 1, backgroundColor: appColors.white}}>
       <ImageBackground
-        source={images.img_EventDetail}
+        source={{uri: item.photoUrl}}
         style={{flex: 1, height: 244, zIndex: -1}}
         imageStyle={{
           resizeMode: 'cover',
@@ -59,12 +110,21 @@ const EventDetail = ({navigation, route}: any) => {
                 styles={{letterSpacing: 1}}
               />
               <CardCT
+                onPress={handleFollower}
                 styles={[globalStyles.noSpaceCard, {width: 36, height: 36}]}
-                color={appColors.white4}>
+                color={
+                  followers.includes(auth.id)
+                    ? appColors.white6
+                    : appColors.white4
+                }>
                 <MaterialIcons
                   name="bookmark"
-                  color={appColors.white}
-                  size={25}
+                  color={
+                    followers.includes(auth.id)
+                      ? appColors.danger2
+                      : appColors.white
+                  }
+                  size={22}
                 />
               </CardCT>
             </RowCT>
@@ -76,31 +136,46 @@ const EventDetail = ({navigation, route}: any) => {
             flex: 1,
             paddingTop: 244 - 153,
           }}>
-          <SectionCT>
-            <View
-              style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
-              <RowCT
-                justify="space-between"
-                styles={[
-                  globalStyles.shadow,
-                  {
-                    backgroundColor: appColors.white,
-                    borderRadius: 100,
-                    paddingHorizontal: 12,
-                    width: '90%',
-                  },
-                ]}>
-                <AvatarGroup size={36} />
-                <TouchableOpacity
-                  style={[
-                    globalStyles.button,
-                    {backgroundColor: appColors.primary, paddingVertical: 8},
+          {item.users.length > 0 ? (
+            <SectionCT>
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flex: 1,
+                }}>
+                <RowCT
+                  justify="space-between"
+                  styles={[
+                    globalStyles.shadow,
+                    {
+                      backgroundColor: appColors.white,
+                      borderRadius: 100,
+                      paddingHorizontal: 12,
+                      width: '90%',
+                    },
                   ]}>
-                  <TextCT text="Invite" color={appColors.white} />
-                </TouchableOpacity>
-              </RowCT>
-            </View>
-          </SectionCT>
+                  <AvatarGroup userIds={item.users} size={36} />
+                  <TouchableOpacity
+                    style={[
+                      globalStyles.button,
+                      {backgroundColor: appColors.primary, paddingVertical: 8},
+                    ]}>
+                    <TextCT text="Invite" color={appColors.white} />
+                  </TouchableOpacity>
+                </RowCT>
+              </View>
+            </SectionCT>
+          ) : (
+            <>
+              <ButtonCT
+                text="Invite"
+                type="primary"
+                styles={{borderRadius: 100}}
+              />
+            </>
+          )}
+
           <View style={{backgroundColor: appColors.white}}>
             <SectionCT>
               <TextCT
@@ -149,17 +224,17 @@ const EventDetail = ({navigation, route}: any) => {
                 <View
                   style={{flex: 1, height: 48, justifyContent: 'space-around'}}>
                   <TextCT
-                    text={item.location.title}
+                    text={item.locationTitle}
                     font={fontFamilies.medium}
                     size={16}
                   />
-                  <TextCT text={item.location.address} color={appColors.gray} />
+                  <TextCT text={item.locationAddress} color={appColors.gray} />
                 </View>
               </RowCT>
               <RowCT styles={{marginBottom: 20}}>
                 <Image
                   source={{
-                    uri: avatarDefault,
+                    uri: item.photoUrl,
                   }}
                   style={{
                     width: 48,
@@ -184,15 +259,6 @@ const EventDetail = ({navigation, route}: any) => {
               </RowCT>
             </SectionCT>
             <TabBarCT title="About Event" />
-            <SectionCT>
-              <TextCT text={item.description} />
-            </SectionCT>
-            <SectionCT>
-              <TextCT text={item.description} />
-            </SectionCT>
-            <SectionCT>
-              <TextCT text={item.description} />
-            </SectionCT>
             <SectionCT>
               <TextCT text={item.description} />
             </SectionCT>
@@ -227,6 +293,7 @@ const EventDetail = ({navigation, route}: any) => {
           }
         />
       </LinearGradient>
+      <LoadingModal visible={isLoading} />
     </View>
   );
 };

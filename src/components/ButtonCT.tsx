@@ -41,6 +41,7 @@ const ButtonCT = (props: Props) => {
   return type === 'primary' ? (
     <View style={{alignItems: 'center'}}>
       <TouchableOpacity
+        activeOpacity={0.8}
         disabled={disable}
         onPress={onPress}
         style={[

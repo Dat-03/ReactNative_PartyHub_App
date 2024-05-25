@@ -34,6 +34,7 @@ const RootNavigator = () => {
 
   const checkLogin = async () => {
     const res = await getItem();
+    
     res && dispatch(addAuth(JSON.parse(res)));
   };
 

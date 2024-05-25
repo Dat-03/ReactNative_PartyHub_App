@@ -5,6 +5,7 @@ export interface AuthState {
   email: string;
   accesstoken: string;
   follow_events?: string[];
+  fcmTokens: string[];
 }
 
 const initialState: AuthState = {
@@ -12,6 +13,7 @@ const initialState: AuthState = {
   email: '',
   accesstoken: '',
   follow_events: [],
+  fcmTokens: [],
 };
 
 const authSlice = createSlice({

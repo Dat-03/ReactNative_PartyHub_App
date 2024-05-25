@@ -91,10 +91,10 @@ const HomeScreen = ({navigation}: any) => {
     setIsLoading(true);
     try {
       const res = await eventAPI.HandleEvent(api);
+      setIsLoading(false);
       res &&
         res.data &&
         (lat && long ? setNearByEvents(res.data) : setEvents(res.data));
-      setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       console.log(error);
